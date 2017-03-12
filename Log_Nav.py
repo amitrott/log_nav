@@ -14,7 +14,7 @@ class Log_Nav():
     def __enter__(self):
         # http://stackoverflow.com/questions/865115/how-do-i-correctly-clean-up-a-python-object
         self.open_file()
-        self.current_line = self.readline()
+        self.readline()
         return self
 
     def open_file(self):
@@ -29,17 +29,18 @@ class Log_Nav():
         self.x = 0
         self.y = 0
         self.file.seek(0)
-        self.current_line = self.readline()
+        self.readline()
         return
 
     def readline(self):
         self.y += 1
-        return self.file.readline()
+        self.current_line = self.file.readline()
+        return
 
     def move_down(self,n=1):
         i = 0
         while(i < n):
-            self.current_line = self.readline()
+            self.readline()
             i += 1
         return
 
@@ -48,12 +49,12 @@ class Log_Nav():
         if target_pos < 0: print("Reached start of file, cannot move up!"); return
         elif target_pos == 0:
             self.go_to_start()
-            self.current_line = self.readline()
+            self.readline()
             return
         else: self.go_to_start()
 
         while(self.y < target_pos):
-            self.current_line = self.readline()
+            self.readline()
         return
 
     def move_down_until_regex(self,patt):
