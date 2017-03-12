@@ -136,10 +136,21 @@ class Log_Nav():
         self.dict[name] = value
         return
 
+    def get_property(self,name):
+        return self.dict[name]
+
     def value_from_regex(self,patt,group=1):
         regex = re.compile(patt)
         result = regex.match(self.current_line)
         return result.group(group)
+
+    def compile_compound_regex(self,patt):
+        # .*dest={{name}}.*
+        find_properties_regex = re.compile(".*\{\{(.*)\}\}.*")
+        properties = find_properties_regex.findall(patt)
+        for prop in properties:
+            patt = str(patt).replace("{{"+prop+"}}",self.dict[prop])
+        return patt
 
 
 with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/line_counts_tabbed.txt") as log_nav:
@@ -161,5 +172,7 @@ with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/line_counts_tabb
     log_nav.go_to_start()
     log_nav.tabbed_regex(".*dest=(.*)")
 
-    log_nav.append_to_output(log_nav.dict["regex_0"],False)
+    log_nav.append_to_output(log_nav.get_property("regex_0"),False)
     print(log_nav.get_output())
+
+    print(log_nav.compile_compound_regex("this is test's value: {{test}}"))
