@@ -1,3 +1,5 @@
+import re
+
 class Log_Nav():
 
     def __init__(self,fname):
@@ -31,14 +33,15 @@ class Log_Nav():
         return
 
     def readline(self):
+        self.y += 1
         return self.file.readline()
 
     def move_down(self,n=1):
         i = 0
         while(i < n):
             self.current_line = self.readline()
-            self.y += 1
             i += 1
+        return
 
     def move_up(self,n=1):
         target_pos = self.y - n
@@ -50,14 +53,37 @@ class Log_Nav():
         else: self.go_to_start()
 
         while(self.y < target_pos):
-            self.y += 1
             self.current_line = self.readline()
+        return
+
+    def move_down_until_regex(self,patt):
+        regex = re.compile(patt)
+        self.move_down()
+
+        while(regex.match(self.current_line) is None and self.current_line is not ""):
+            self.move_down()
+
+        self.current_line = "End of file reached with no match for "+patt \
+                        if self.current_line is "" else self.current_line
+        return
+
+    def move_up_until_regex(self,patt):
+        regex = re.compile(patt)
+        self.move_up()
+        i = self.y
+
+        while (regex.match(self.current_line) is None and i >= 0):
+            self.move_up()
+            i -= 1
+
+        self.current_line = "Start of file reached with no match for " + patt \
+                        if i < 0 else self.current_line
         return
 
 
 with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/line_counts.txt") as log_nav:
     print(log_nav.current_line)
-    log_nav.move_down(3)
+    log_nav.move_down_until_regex("fifth")
     print(log_nav.current_line)
-    log_nav.move_up(2)
+    log_nav.move_up_until_regex(".*ir.*")
     print(log_nav.current_line)
