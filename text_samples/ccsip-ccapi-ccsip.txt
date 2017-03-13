@@ -1,0 +1,762 @@
+
+2921-A#
+2921-A#term len 0
+2921-A#
+2921-A#sh log
+Syslog logging: enabled (0 messages dropped, 3 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: disabled
+    Monitor logging: disabled
+    Buffer logging:  level debugging, 7220 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging messages: disabled
+    Persistent logging: disabled
+
+No active filter modules.
+
+    Trap logging: level debugging, 31438 message lines logged
+        Logging Source-Interface:       VRF Name:
+
+Log Buffer (3000000 bytes):
+
+002714: *May  9 08:59:13.037: //-1/xxxxxxxxxxxx/SIP/Msg/ccsipDisplayMsg:
+Received:
+INVITE sip:3000@192.168.105.105:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.106.8:5060;branch=z9hG4bK2026F5
+Remote-Party-ID: <sip:1001@192.168.106.8>;party=calling;screen=no;privacy=off
+From: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+To: <sip:3000@192.168.105.105>
+Date: Sun, 08 Jan 2006 18:03:22 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+Supported: 100rel,timer,resource-priority,replaces,sdp-anat
+Min-SE:  1800
+Cisco-Guid: 3818374578-2141655514-2156449024-1330911669
+User-Agent: Cisco-SIPGateway/IOS-12.x
+Allow: INVITE, OPTIONS, BYE, CANCEL, ACK, PRACK, UPDATE, REFER, SUBSCRIBE, NOTIFY, INFO, REGISTER
+CSeq: 101 INVITE
+Max-Forwards: 70
+Timestamp: 1136743402
+Contact: <sip:1001@192.168.106.8:5060>
+Expires: 180
+Allow-Events: kpml, telephone-event
+Content-Type: application/sdp
+Content-Disposition: session;handling=required
+Content-Length: 240
+
+v=0
+o=CiscoSystemsSIP-GW-UserAgent 337 57 IN IP4 192.168.106.8
+s=SIP Call
+c=IN IP4 192.168.106.8
+t=0 0
+m=audio 16828 RTP/AVP 0 100
+c=IN IP4 192.168.106.8
+a=rtpmap:0 PCMU/8000
+a=rtpmap:100 X-NSE/8000
+a=fmtp:100 192-194
+a=ptime:20
+
+002715: *May  9 08:59:13.041: //-1/E397C5B28088/CCAPI/cc_api_display_ie_subfields:
+   cc_api_call_setup_ind_common:
+   cisco-username=1001
+   ----- ccCallInfo IE subfields -----
+   cisco-ani=1001
+   cisco-anitype=0
+   cisco-aniplan=0
+   cisco-anipi=0
+   cisco-anisi=0
+   dest=3000
+   cisco-desttype=0
+   cisco-destplan=0
+   cisco-rdie=FFFFFFFF
+   cisco-rdn=
+   cisco-rdntype=0
+   cisco-rdnplan=0
+   cisco-rdnpi=-1
+   cisco-rdnsi=-1
+   cisco-redirectreason=-1   fwd_final_type =0
+   final_redirectNumber =
+   hunt_group_timeout =0
+
+002716: *May  9 08:59:13.041: //-1/E397C5B28088/CCAPI/cc_api_call_setup_ind_common:
+   Interface=0x429576D0, Call Info(
+   Calling Number=1001,(Calling Name=)(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed),
+   Called Number=3000(TON=Unknown, NPI=Unknown),
+   Calling Translated=FALSE, Subscriber Type Str=Unknown, FinalDestinationFlag=TRUE,
+   Incoming Dial-peer=3000, Progress Indication=NULL(0), Calling IE Present=TRUE,
+   Source Trkgrp Route Label=, Target Trkgrp Route Label=, CLID Transparent=FALSE), Call Id=680
+002717: *May  9 08:59:13.041: //-1/E397C5B28088/CCAPI/ccCheckClipClir:
+   In: Calling Number=1001(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed)
+002718: *May  9 08:59:13.041: //-1/E397C5B28088/CCAPI/ccCheckClipClir:
+   Out: Calling Number=1001(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed)
+002719: *May  9 08:59:13.041: //-1/xxxxxxxxxxxx/CCAPI/cc_get_feature_vsa:
+
+002720: *May  9 08:59:13.041: :cc_get_feature_vsa malloc success
+002721: *May  9 08:59:13.041: //-1/xxxxxxxxxxxx/CCAPI/cc_get_feature_vsa:
+
+002722: *May  9 08:59:13.041:  cc_get_feature_vsa count is 1
+002723: *May  9 08:59:13.041: //-1/xxxxxxxxxxxx/CCAPI/cc_get_feature_vsa:
+
+002724: *May  9 08:59:13.041: :FEATURE_VSA attributes are: feature_name:0,feature_time:1155948176,feature_id:28
+002725: *May  9 08:59:13.041: //680/E397C5B28088/CCAPI/cc_api_call_setup_ind_common:
+   Set Up Event Sent;
+   Call Info(Calling Number=1001(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed),
+   Called Number=3000(TON=Unknown, NPI=Unknown))
+002726: *May  9 08:59:13.041: //680/E397C5B28088/CCAPI/cc_process_call_setup_ind:
+   Event=0x3FAB4CF8
+002727: *May  9 08:59:13.041: //-1/xxxxxxxxxxxx/CCAPI/cc_setupind_match_search:
+   Try with the demoted called number 3000
+002728: *May  9 08:59:13.041: //680/E397C5B28088/CCAPI/ccCallSetContext:
+   Context=0x3DE888F0
+002729: *May  9 08:59:13.041: //680/E397C5B28088/CCAPI/cc_process_call_setup_ind:
+   >>>>CCAPI handed cid 680 with tag 3000 to app "_ManagedAppProcess_Default"
+002730: *May  9 08:59:13.041: //680/E397C5B28088/CCAPI/ccCallProceeding:
+   Progress Indication=NULL(0)
+002731: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccCallSetupRequest:
+   Destination=, Calling IE Present=TRUE, Mode=0,
+   Outgoing Dial-peer=40002, Params=0x3DE8E000, Progress Indication=NULL(0)
+002732: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccCheckClipClir:
+   In: Calling Number=1001(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed)
+002733: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccCheckClipClir:
+   Out: Calling Number=1001(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed)
+002734: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccCallSetupRequest:
+   Destination Pattern=3000$, Called Number=3000, Digit Strip=FALSE
+002735: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccCallSetupRequest:
+   Calling Number=1001(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed),
+   Called Number=3000(TON=Unknown, NPI=Unknown),
+   Redirect Number=, Display Info=
+   Account Number=1001, Final Destination Flag=TRUE,
+   Guid=E397C5B2-7FA7-11DA-8088-CD004F5419B5, Outgoing Dial-peer=40002
+002736: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/cc_api_display_ie_subfields:
+   ccCallSetupRequest:
+   cisco-username=1001
+   ----- ccCallInfo IE subfields -----
+   cisco-ani=1001
+   cisco-anitype=0
+   cisco-aniplan=0
+   cisco-anipi=0
+   cisco-anisi=0
+   dest=3000
+   cisco-desttype=0
+   cisco-destplan=0
+   cisco-rdie=FFFFFFFF
+   cisco-rdn=
+   cisco-rdntype=0
+   cisco-rdnplan=0
+   cisco-rdnpi=-1
+   cisco-rdnsi=-1
+   cisco-redirectreason=-1   fwd_final_type =0
+   final_redirectNumber =
+   hunt_group_timeout =0
+
+002737: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccIFCallSetupRequestPrivate:
+   Interface=0x429576D0, Interface Type=3, Destination=, Mode=0x0,
+   Call Params(Calling Number=1001,(Calling Name=)(TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed),
+   Called Number=3000(TON=Unknown, NPI=Unknown), Calling Translated=FALSE,
+   Subscriber Type Str=Unknown, FinalDestinationFlag=TRUE, Outgoing Dial-peer=40002, Call Count On=FALSE,
+   Source Trkgrp Route Label=, Target Trkgrp Route Label=, tg_label_flag=0, Application Call Id=)
+002738: *May  9 08:59:13.045: //-1/xxxxxxxxxxxx/CCAPI/cc_get_feature_vsa:
+
+002739: *May  9 08:59:13.045: :cc_get_feature_vsa malloc success
+002740: *May  9 08:59:13.045: //-1/xxxxxxxxxxxx/CCAPI/cc_get_feature_vsa:
+
+002741: *May  9 08:59:13.045:  cc_get_feature_vsa count is 2
+002742: *May  9 08:59:13.045: //-1/xxxxxxxxxxxx/CCAPI/cc_get_feature_vsa:
+
+002743: *May  9 08:59:13.045: :FEATURE_VSA attributes are: feature_name:0,feature_time:1155947728,feature_id:29
+002744: *May  9 08:59:13.045: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002745: *May  9 08:59:13.045: cc_api_get_xcode_stream : 4983
+002746: *May  9 08:59:13.045: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002747: *May  9 08:59:13.045: cc_api_get_xcode_stream : 4983
+002748: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event=101, Call Id=680
+002749: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event Is Sent To Conferenced SPI(s) Directly
+002750: *May  9 08:59:13.045: //681/E397C5B28088/CCAPI/ccIFCallSetupRequestPrivate:
+   SPI Call Setup Request Is Success; Interface Type=3, FlowMode=1
+002751: *May  9 08:59:13.045: //681/E397C5B28088/CCAPI/ccCallSetContext:
+   Context=0x3DE8DFB0
+002752: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccSaveDialpeerTag:
+   Outgoing Dial-peer=40002
+002753: *May  9 08:59:13.045: //681/E397C5B28088/CCAPI/ccGetMediaClassTag:
+   media class tag 0
+002754: *May  9 08:59:13.045: //681/E397C5B28088/CCAPI/ccSetMediaclassIp2ipTags:
+   media class tags set: NR 0, ASP 0
+002755: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccGetMediaClassTag:
+   media class tag 0
+002756: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccSetMediaclassIp2ipTags:
+   media class tags set: NR 0, ASP 0
+002757: *May  9 08:59:13.045: //681/E397C5B28088/CCAPI/ccGet_xc_nr_asp_info:
+   media class tags: NR 0, ASP 0
+002758: *May  9 08:59:13.045: //680/E397C5B28088/CCAPI/ccGet_xc_nr_asp_info:
+   media class tags: NR 0, ASP 0
+002759: *May  9 08:59:13.045: //-1/xxxxxxxxxxxx/CCAPI/cc_is_cng_fax_detect_active:
+   Call Id 680
+002760: *May  9 08:59:13.045: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002761: *May  9 08:59:13.045: cc_api_get_xcode_stream : 4983
+002762: *May  9 08:59:13.049: //681/E397C5B28088/CCAPI/cc_api_call_proceeding:
+   Interface=0x429576D0, Progress Indication=NULL(0)
+002763: *May  9 08:59:13.049: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002764: *May  9 08:59:13.049: cc_api_get_xcode_stream : 4983
+002765: *May  9 08:59:13.049: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002766: *May  9 08:59:13.049: cc_api_get_xcode_stream : 4983
+002767: *May  9 08:59:13.049: //680/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Sent:
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.106.8:5060;branch=z9hG4bK2026F5
+From: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+To: <sip:3000@192.168.105.105>
+Date: Mon, 09 May 2016 13:59:13 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+Timestamp: 1136743402
+CSeq: 101 INVITE
+Allow-Events: telephone-event
+Server: Cisco-SIPGateway/IOS-15.6.1.T1
+Content-Length: 0
+
+
+002768: *May  9 08:59:13.049: //681/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Sent:
+INVITE sip:3000@192.168.106.8:1025 SIP/2.0
+Via: SIP/2.0/UDP 192.168.105.105:5060;branch=z9hG4bK51FA9
+Remote-Party-ID: <sip:1001@192.168.105.105>;party=calling;screen=no;privacy=off
+From: <sip:1001@192.168.105.105>;tag=21358C4-2511
+To: <sip:3000@192.168.106.8>
+Date: Mon, 09 May 2016 13:59:13 GMT
+Call-ID: B649F8D-152511E6-8309AC93-ED4CEDD5@192.168.105.105
+Supported: 100rel,timer,resource-priority,replaces
+Min-SE:  1800
+Cisco-Guid: 3818374578-2141655514-2156449024-1330911669
+User-Agent: Cisco-SIPGateway/IOS-15.6.1.T1
+Allow: INVITE, OPTIONS, BYE, CANCEL, ACK, PRACK, UPDATE, REFER, SUBSCRIBE, NOTIFY, INFO, REGISTER
+CSeq: 101 INVITE
+Timestamp: 1462802353
+Contact: <sip:1001@192.168.105.105:5060>
+Expires: 180
+Allow-Events: telephone-event
+Max-Forwards: 69
+Content-Type: application/sdp
+Content-Disposition: session;handling=required
+Content-Length: 224
+
+v=0
+o=CiscoSystemsSIP-GW-UserAgent 1436 5211 IN IP4 192.168.105.105
+s=SIP Call
+c=IN IP4 192.168.105.105
+t=0 0
+m=audio 16428 RTP/AVP 0 19
+c=IN IP4 192.168.105.105
+a=rtpmap:0 PCMU/8000
+a=rtpmap:19 CN/8000
+a=ptime:20
+
+002769: *May  9 08:59:13.061: //681/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Received:
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.105.105:5060;branch=z9hG4bK51FA9
+From: <sip:1001@192.168.105.105>;tag=21358C4-2511
+To: <sip:3000@192.168.106.8>
+Call-ID: B649F8D-152511E6-8309AC93-ED4CEDD5@192.168.105.105
+Date: Mon, 09 May 2016 13:59:12 GMT
+CSeq: 101 INVITE
+Server: Cisco-CP9971/9.4.2
+Contact: <sip:9E88-2285@192.168.106.8:1025;transport=udp>
+Allow: ACK,BYE,CANCEL,INVITE,NOTIFY,OPTIONS,REFER,REGISTER,UPDATE,SUBSCRIBE,INFO
+Supported: replaces,join,sdp-anat,norefersub,resource-priority,extended-refer,X-cisco-callinfo,X-cisco-serviceuri,X-cisco-escapecodes,X-cisco-service-control,X-cisco-srtp-fallback,X-cisco-monrec,X-cisco-config,X-cisco-sis-7.0.0,X-cisco-xsi-8.0.1
+Allow-Events: dialog
+Content-Length: 0
+Recv-Info: conference
+Recv-Info: x-cisco-conference
+
+
+002770: *May  9 08:59:13.089: //681/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Received:
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.105.105:5060;branch=z9hG4bK51FA9
+From: <sip:1001@192.168.105.105>;tag=21358C4-2511
+To: <sip:3000@192.168.106.8>;tag=10bd18dc96fc07b2039fc7f7-2665c799
+Call-ID: B649F8D-152511E6-8309AC93-ED4CEDD5@192.168.105.105
+Date: Mon, 09 May 2016 13:59:12 GMT
+CSeq: 101 INVITE
+Server: Cisco-CP9971/9.4.2
+Contact: <sip:9E88-2285@192.168.106.8:1025;transport=udp>
+Allow: ACK,BYE,CANCEL,INVITE,NOTIFY,OPTIONS,REFER,REGISTER,UPDATE,SUBSCRIBE,INFO
+Remote-Party-ID: "3000" <sip:3000@192.168.105.105>;party=called;id-type=subscriber;privacy=off;screen=yes
+Supported: replaces,join,sdp-anat,norefersub,resource-priority,extended-refer,X-cisco-callinfo,X-cisco-serviceuri,X-cisco-escapecodes,X-cisco-service-control,X-cisco-srtp-fallback,X-cisco-monrec,X-cisco-config,X-cisco-sis-7.0.0,X-cisco-xsi-8.0.1
+Allow-Events: dialog
+Content-Length: 0
+
+
+002771: *May  9 08:59:13.089: //681/E397C5B28088/CCAPI/cc_api_call_alert:
+   Interface=0x429576D0, Progress Indication=NULL(0), Signal Indication=SIGNAL RINGBACK(1)
+002772: *May  9 08:59:13.089: //681/E397C5B28088/CCAPI/cc_api_call_alert:
+   Call Entry(Retry Count=0, Responsed=TRUE)
+002773: *May  9 08:59:13.089: //680/E397C5B28088/CCAPI/ccCallAlert:
+   Progress Indication=NULL(0), Signal Indication=SIGNAL RINGBACK(1)
+002774: *May  9 08:59:13.089: //680/E397C5B28088/CCAPI/ccCallAlert:
+   Call Entry(Responsed=TRUE, Alert Sent=TRUE)
+002775: *May  9 08:59:13.089: //680/E397C5B28088/CCAPI/ccCallNotify:
+   Data Bitmask=0x7, Call Id=680
+002776: *May  9 08:59:13.089: //680/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Sent:
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.106.8:5060;branch=z9hG4bK2026F5
+From: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+To: <sip:3000@192.168.105.105>;tag=21358EC-1575
+Date: Mon, 09 May 2016 13:59:13 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+Timestamp: 1136743402
+CSeq: 101 INVITE
+Require: 100rel
+RSeq: 1447
+Allow: INVITE, OPTIONS, BYE, CANCEL, ACK, PRACK, UPDATE, REFER, SUBSCRIBE, NOTIFY, INFO, REGISTER
+Allow-Events: telephone-event
+Remote-Party-ID: "3000" <sip:3000@192.168.105.105>;party=called;screen=yes;privacy=off
+Contact: <sip:9E88-2285@192.168.105.105:5060>
+Server: Cisco-SIPGateway/IOS-15.6.1.T1
+Content-Length: 0
+
+
+002777: *May  9 08:59:13.101: //-1/xxxxxxxxxxxx/SIP/Msg/ccsipDisplayMsg:
+Received:
+PRACK sip:9E88-2285@192.168.105.105:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.106.8:5060;branch=z9hG4bK217B0
+From: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+To: <sip:3000@192.168.105.105>;tag=21358EC-1575
+Date: Sun, 08 Jan 2006 18:03:22 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+CSeq: 102 PRACK
+RAck: 1447 101 INVITE
+Allow-Events: kpml, telephone-event
+Max-Forwards: 70
+Content-Length: 0
+
+
+002778: *May  9 08:59:13.101: //680/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Sent:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.106.8:5060;branch=z9hG4bK217B0
+From: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+To: <sip:3000@192.168.105.105>;tag=21358EC-1575
+Date: Mon, 09 May 2016 13:59:13 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+Server: Cisco-SIPGateway/IOS-15.6.1.T1
+CSeq: 102 PRACK
+Content-Length: 0
+
+
+002779: *May  9 08:59:17.057: //681/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Received:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.105.105:5060;branch=z9hG4bK51FA9
+From: <sip:1001@192.168.105.105>;tag=21358C4-2511
+To: <sip:3000@192.168.106.8>;tag=10bd18dc96fc07b2039fc7f7-2665c799
+Call-ID: B649F8D-152511E6-8309AC93-ED4CEDD5@192.168.105.105
+Date: Mon, 09 May 2016 13:59:16 GMT
+CSeq: 101 INVITE
+Server: Cisco-CP9971/9.4.2
+Contact: <sip:9E88-2285@192.168.106.8:1025;transport=udp>
+Allow: ACK,BYE,CANCEL,INVITE,NOTIFY,OPTIONS,REFER,REGISTER,UPDATE,SUBSCRIBE,INFO
+Remote-Party-ID: "3000" <sip:3000@192.168.105.105>;party=called;id-type=subscriber;privacy=off;screen=yes
+Supported: replaces,join,sdp-anat,norefersub,resource-priority,extended-refer,X-cisco-callinfo,X-cisco-serviceuri,X-cisco-escapecodes,X-cisco-service-control,X-cisco-srtp-fallback,X-cisco-monrec,X-cisco-config,X-cisco-sis-7.0.0,X-cisco-xsi-8.0.1
+Allow-Events: dialog
+Recv-Info: conference
+Recv-Info: x-cisco-conference
+Content-Length: 146
+Content-Type: application/sdp
+Content-Disposition: session;handling=optional
+
+v=0
+o=Cisco-SIPUA 19983 0 IN IP4 10.0.8.2
+s=SIP Call
+t=0 0
+m=audio 30114 RTP/AVP 0
+c=IN IP4 192.168.106.8
+a=rtpmap:0 PCMU/8000
+a=sendrecv
+
+002780: *May  9 08:59:17.057: //681/E397C5B28088/CCAPI/cc_api_caps_ind:
+   Destination Interface=0x0, Destination Call Id=-1, Source Call Id=681,
+   Caps(Codec=0x1, Fax Rate=0x2, Fax Version:=0, Vad=0x2,
+   Modem=0x0, Codec Bytes=160, Signal Type=2)
+002781: *May  9 08:59:17.057: //681/E397C5B28088/CCAPI/cc_api_caps_ind:
+   Caps(Playout Mode=1, Playout Initial=60(ms), Playout Min=40(ms),
+   Playout Max=1000(ms), Fax Nom=300(ms))
+002782: *May  9 08:59:17.057: //680/E397C5B28088/CCAPI/cc_api_caps_ack:
+   Destination Interface=0x0, Destination Call Id=-1, Source Call Id=680,
+   Caps(Codec=g711ulaw(0x1), Fax Rate=FAX_RATE_VOICE(0x2), Fax Version:=0, Vad=ON(0x2),
+   Modem=OFF(0x0), Codec Bytes=160, Signal Type=2, Seq Num Start=7625)
+002783: *May  9 08:59:17.057: //680/E397C5B28088/CCAPI/cc_api_caps_ack:
+   Destination Interface=0x0, Destination Call Id=-1, Source Call Id=680,
+   Caps(Codec=g711ulaw(0x1), Fax Rate=FAX_RATE_VOICE(0x2), Fax Version:=0, Vad=ON(0x2),
+   Modem=OFF(0x0), Codec Bytes=160, Signal Type=2, Seq Num Start=7625)
+002784: *May  9 08:59:17.057: //681/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event=103, Call Id=681
+002785: *May  9 08:59:17.057: //681/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event Is Sent To Conferenced SPI(s) Directly
+002786: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/cc_api_call_connected:
+   Interface=0x429576D0, Data Bitmask=0x81000001, Progress Indication=NULL(0),
+   Connection Handle=0
+002787: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/cc_api_call_connected:
+   Call Entry(Connected=TRUE, Responsed=TRUE, Retry Count=0)
+002788: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event=111, Call Id=681
+002789: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event Is Sent To Conferenced SPI(s) Directly
+002790: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event=213, Call Id=681
+002791: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event Is Sent To Conferenced SPI(s) Directly
+002792: *May  9 08:59:17.061: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002793: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002794: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002795: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002796: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002797: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002798: *May  9 08:59:17.061: //681/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Sent:
+ACK sip:9E88-2285@192.168.106.8:1025;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.105.105:5060;branch=z9hG4bK52170
+From: <sip:1001@192.168.105.105>;tag=21358C4-2511
+To: <sip:3000@192.168.106.8>;tag=10bd18dc96fc07b2039fc7f7-2665c799
+Date: Mon, 09 May 2016 13:59:13 GMT
+Call-ID: B649F8D-152511E6-8309AC93-ED4CEDD5@192.168.105.105
+Max-Forwards: 70
+CSeq: 101 ACK
+Allow-Events: telephone-event
+Content-Length: 0
+
+
+002799: *May  9 08:59:17.061: //680/E397C5B28088/CCAPI/ccConferenceCreate:
+   (confID=0xFFFFFFFF, callID1=0x2A8, gcid=B62CB15-152511E6-8306AC93-ED4CEDD5, tag=0x0)
+002800: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/ccConferenceCreate:
+   (confID=0xFFFFFFFF, callID2=0x2A9, gcid=B62CB15-152511E6-8306AC93-ED4CEDD5, tag=0x0)
+002801: *May  9 08:59:17.061: //680/E397C5B28088/CCAPI/ccConferenceCreate:
+   Conference Id=0xFFFFFFFF, Call Id1=680, Call Id2=681, Tag=0x0
+002802: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002803: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002804: *May  9 08:59:17.061: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002805: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002806: *May  9 08:59:17.061: //680/E397C5B28088/CCAPI/ccConferenceCreate:
+
+002807: *May  9 08:59:17.061: ccConferenceCreate: ret1=0, codecMask1=1, bytes1=160, negot1=1, dtmf1=0
+                    ret2=0, codecMask2=1, bytes2=160, negot2=1, dtmf2=0,
+                    tx_dynamic_pt1=0, rx_dynamic_pt1=0, codec_mode1=0, params_bitmap1 =0
+                    tx_dynamic_pt2=0, rx_dynamic_pt2=0, codec_mode2=0, params_bitmap2 =0
+002808: *May  9 08:59:17.061: //680/E397C5B28088/CCAPI/ccGetMediaClassTag:
+   media class tag 0
+002809: *May  9 08:59:17.061: //680/E397C5B28088/CCAPI/ccSetMediaclassIp2ipTags:
+   media class tags set: NR 0, ASP 0
+002810: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/ccGetMediaClassTag:
+   media class tag 0
+002811: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/ccSetMediaclassIp2ipTags:
+   media class tags set: NR 0, ASP 0
+002812: *May  9 08:59:17.061: //680/E397C5B28088/CCAPI/ccGet_xc_nr_asp_info:
+   media class tags: NR 0, ASP 0
+002813: *May  9 08:59:17.061: //681/E397C5B28088/CCAPI/ccGet_xc_nr_asp_info:
+   media class tags: NR 0, ASP 0
+002814: *May  9 08:59:17.061: //-1/xxxxxxxxxxxx/CCAPI/cc_is_cng_fax_detect_active:
+   Call Id 680
+002815: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/ccConferenceCreate:
+   xcoder inserted for preferred features w/ mask 0x0
+002816: *May  9 08:59:17.061: //680/E397C5B28088/CCAPI/ccConferenceCreate:
+   delay media to slow start case, codec negotation is not done
+002817: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002818: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002819: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002820: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002821: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002822: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002823: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002824: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002825: *May  9 08:59:17.061: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002826: *May  9 08:59:17.061: cc_api_get_xcode_stream : 4983
+002827: *May  9 08:59:17.065: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002828: *May  9 08:59:17.065: cc_api_get_xcode_stream : 4983
+002829: *May  9 08:59:17.065: //680/E397C5B28088/CCAPI/cc_api_bridge_done:
+   Conference Id=0x6, Source Interface=0x429576D0, Source Call Id=680,
+   Destination Call Id=681, Disposition=0x0, Tag=0x0
+002830: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002831: *May  9 08:59:17.065: cc_api_get_xcode_stream : 4983
+002832: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002833: *May  9 08:59:17.065: cc_api_get_xcode_stream : 4983
+002834: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002835: *May  9 08:59:17.065: cc_api_get_xcode_stream : 4983
+002836: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002837: *May  9 08:59:17.065: cc_api_get_xcode_stream : 4983
+002838: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002839: *May  9 08:59:17.065: cc_api_get_xcode_stream : 4983
+002840: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002841: *May  9 08:59:17.065: cc_api_get_xcode_stream : 4983
+002842: *May  9 08:59:17.065: //681/E397C5B28088/CCAPI/cc_api_bridge_done:
+   Conference Id=0x6, Source Interface=0x429576D0, Source Call Id=681,
+   Destination Call Id=680, Disposition=0x0, Tag=0x0
+002843: *May  9 08:59:17.065: //680/E397C5B28088/CCAPI/cc_generic_bridge_done:
+   Conference Id=0x6, Source Interface=0x429576D0, Source Call Id=681,
+   Destination Call Id=680, Disposition=0x0, Tag=0x0
+002844: *May  9 08:59:17.065: //680/E397C5B28088/CCAPI/ccConferenceCreate:
+   Call Entry(Conference Id=0x6, Destination Call Id=681)
+002845: *May  9 08:59:17.065: //681/E397C5B28088/CCAPI/ccConferenceCreate:
+   Call Entry(Conference Id=0x6, Destination Call Id=680)
+002846: *May  9 08:59:17.065: //680/E397C5B28088/CCAPI/ccConferenceCreate:
+
+002847: *May  9 08:59:17.065: confID:0x6; callEntry1 callID1:0x2A8, type:3; callEntry2 callID2:0x2A9, type:3
+
+002848: *May  9 08:59:17.065: //680/E397C5B28088/CCAPI/cc_process_notify_bridge_done:
+   Conference Id=0x6, Call Id1=680, Call Id2=681
+002849: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_ha_call_active_notify:
+
+002850: *May  9 08:59:17.065: call_info mainst_callID:0x2A9, peer_callID:0x2A8, confID:0x6, spi_type:4, media_flo_thru:1,num_streams:1, swmtpmsp_present:0
+
+002851: *May  9 08:59:17.065: //681/xxxxxxxxxxxx/CCAPI/cc_api_ha_call_active_notify:
+
+002852: *May  9 08:59:17.065:   stream[0]: callid:0x2A9, media_passthrough:1
+002853: *May  9 08:59:17.065: //680/E397C5B28088/CCAPI/ccCallConnect:
+   Progress Indication=NULL(0), Data Bitmask=0x81000001
+002854: *May  9 08:59:17.065: //680/E397C5B28088/CCAPI/ccCallConnect:
+   Call Entry(Connected=TRUE, Responsed=TRUE)
+002855: *May  9 08:59:17.069: //680/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Sent:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.106.8:5060;branch=z9hG4bK2026F5
+From: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+To: <sip:3000@192.168.105.105>;tag=21358EC-1575
+Date: Mon, 09 May 2016 13:59:13 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+Timestamp: 1136743402
+CSeq: 101 INVITE
+Allow: INVITE, OPTIONS, BYE, CANCEL, ACK, PRACK, UPDATE, REFER, SUBSCRIBE, NOTIFY, INFO, REGISTER
+Allow-Events: telephone-event
+Remote-Party-ID: "3000" <sip:3000@192.168.105.105>;party=called;screen=yes;privacy=off
+Contact: <sip:3000@192.168.105.105:5060>
+Supported: replaces
+Supported: sdp-anat
+Server: Cisco-SIPGateway/IOS-15.6.1.T1
+Supported: timer
+Content-Type: application/sdp
+Content-Disposition: session;handling=required
+Content-Length: 200
+
+v=0
+o=CiscoSystemsSIP-GW-UserAgent 6159 7371 IN IP4 192.168.105.105
+s=SIP Call
+c=IN IP4 192.168.105.105
+t=0 0
+m=audio 16426 RTP/AVP 0
+c=IN IP4 192.168.105.105
+a=rtpmap:0 PCMU/8000
+a=ptime:20
+
+002856: *May  9 08:59:17.093: //-1/xxxxxxxxxxxx/SIP/Msg/ccsipDisplayMsg:
+Received:
+ACK sip:3000@192.168.105.105:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.106.8:5060;branch=z9hG4bK222149
+From: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+To: <sip:3000@192.168.105.105>;tag=21358EC-1575
+Date: Sun, 08 Jan 2006 18:03:22 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+Max-Forwards: 70
+CSeq: 101 ACK
+Allow-Events: kpml, telephone-event
+Content-Length: 0
+
+
+002857: *May  9 08:59:17.093: //680/xxxxxxxxxxxx/CCAPI/cc_api_ha_call_active_notify:
+
+002858: *May  9 08:59:17.093: call_info mainst_callID:0x2A8, peer_callID:0x2A9, confID:0x6, spi_type:4, media_flo_thru:1,num_streams:1, swmtpmsp_present:0
+
+002859: *May  9 08:59:17.093: //680/xxxxxxxxxxxx/CCAPI/cc_api_ha_call_active_notify:
+
+002860: *May  9 08:59:17.093:   stream[0]: callid:0x2A8, media_passthrough:1
+002861: *May  9 08:59:17.093: //680/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event=111, Call Id=680
+002862: *May  9 08:59:17.093: //680/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event Is Sent To Conferenced SPI(s) Directly
+002863: *May  9 08:59:17.093: //680/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event=213, Call Id=680
+002864: *May  9 08:59:17.093: //680/E397C5B28088/CCAPI/cc_api_event_indication:
+   Event Is Sent To Conferenced SPI(s) Directly
+002865: *May  9 08:59:18.513: //-1/xxxxxxxxxxxx/SIP/Msg/ccsipDisplayMsg:
+Received:
+BYE sip:1001@192.168.105.105:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.106.8:1025;branch=z9hG4bK4d3bf441
+From: <sip:3000@192.168.106.8>;tag=10bd18dc96fc07b2039fc7f7-2665c799
+To: <sip:1001@192.168.105.105>;tag=21358C4-2511
+Call-ID: B649F8D-152511E6-8309AC93-ED4CEDD5@192.168.105.105
+Max-Forwards: 70
+Date: Mon, 09 May 2016 13:59:17 GMT
+CSeq: 101 BYE
+User-Agent: Cisco-CP9971/9.4.2
+Content-Length: 0
+Authorization: Digest username="pool3",realm="cisco.com",uri="sip:1001@192.168.105.105:5060",response="8209b069cdd0649cd858e2d78eb528c0",nonce="72607D3400351076",cnonce="1b277fe2",qop=auth,nc=00000002,algorithm=MD5
+
+
+002866: *May  9 08:59:18.513: //680/E397C5B28088/CCAPI/ccGenerateToneInfo:
+   Stop Tone On Digit=FALSE, Tone=Null,
+   Tone Direction=Sum Network, Params=0x0, Call Id=680
+002867: *May  9 08:59:18.513: //681/E397C5B28088/CCAPI/cc_api_call_disconnected:
+   Cause Value=16, Interface=0x429576D0, Call Id=681
+002868: *May  9 08:59:18.513: //681/E397C5B28088/CCAPI/cc_api_call_disconnected:
+   Call Entry(Responsed=TRUE, Cause Value=16, Retry Count=0)
+002869: *May  9 08:59:18.513: //680/E397C5B28088/CCAPI/ccConferenceDestroy:
+   Conference Id=0x6, Tag=0x0
+002870: *May  9 08:59:18.513: //680/E397C5B28088/CCAPI/ccConferenceDestroy:
+
+002871: *May  9 08:59:18.513: confID:0x6; callEntry1 callID1:0x2A8, type:3; callEntry2 callID2:0x2A9, type:3
+
+002872: *May  9 08:59:18.513: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002873: *May  9 08:59:18.513: cc_api_get_xcode_stream : 4983
+002874: *May  9 08:59:18.513: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002875: *May  9 08:59:18.513: cc_api_get_xcode_stream : 4983
+002876: *May  9 08:59:18.513: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002877: *May  9 08:59:18.513: cc_api_get_xcode_stream : 4983
+002878: *May  9 08:59:18.513: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002879: *May  9 08:59:18.513: cc_api_get_xcode_stream : 4983
+002880: *May  9 08:59:18.513: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002881: *May  9 08:59:18.513: cc_api_get_xcode_stream : 4983
+002882: *May  9 08:59:18.513: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002883: *May  9 08:59:18.513: cc_api_get_xcode_stream : 4983
+002884: *May  9 08:59:18.513: //680/E397C5B28088/CCAPI/cc_api_bridge_drop_done:
+   Conference Id=0x6, Source Interface=0x429576D0, Source Call Id=680,
+   Destination Call Id=681, Disposition=0x0, Tag=0x0
+002885: *May  9 08:59:18.513: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002886: *May  9 08:59:18.513: cc_api_get_xcode_stream : 4983
+002887: *May  9 08:59:18.517: //680/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002888: *May  9 08:59:18.517: cc_api_get_xcode_stream : 4983
+002889: *May  9 08:59:18.517: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002890: *May  9 08:59:18.517: cc_api_get_xcode_stream : 4983
+002891: *May  9 08:59:18.517: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002892: *May  9 08:59:18.517: cc_api_get_xcode_stream : 4983
+002893: *May  9 08:59:18.517: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002894: *May  9 08:59:18.517: cc_api_get_xcode_stream : 4983
+002895: *May  9 08:59:18.517: //681/xxxxxxxxxxxx/CCAPI/cc_api_get_xcode_stream:
+
+002896: *May  9 08:59:18.517: cc_api_get_xcode_stream : 4983
+002897: *May  9 08:59:18.517: //681/E397C5B28088/CCAPI/cc_api_bridge_drop_done:
+   Conference Id=0x6, Source Interface=0x429576D0, Source Call Id=681,
+   Destination Call Id=680, Disposition=0x0, Tag=0x0
+002898: *May  9 08:59:18.517: //680/E397C5B28088/CCAPI/cc_generic_bridge_done:
+   Conference Id=0x6, Source Interface=0x429576D0, Source Call Id=681,
+   Destination Call Id=680, Disposition=0x0, Tag=0x0
+002899: *May  9 08:59:18.517: //680/E397C5B28088/CCAPI/ccCallDisconnect:
+   Cause Value=16, Tag=0x0, Call Entry(Previous Disconnect Cause=0, Disconnect Cause=0)
+002900: *May  9 08:59:18.517: //680/E397C5B28088/CCAPI/ccCallDisconnect:
+   Cause Value=16, Call Entry(Responsed=TRUE, Cause Value=16)
+002901: *May  9 08:59:18.517: //681/E397C5B28088/CCAPI/ccCallDisconnect:
+   Cause Value=16, Tag=0x0, Call Entry(Previous Disconnect Cause=0, Disconnect Cause=16)
+002902: *May  9 08:59:18.517: //681/E397C5B28088/CCAPI/ccCallDisconnect:
+   Cause Value=16, Call Entry(Responsed=TRUE, Cause Value=16)
+002903: *May  9 08:59:18.517: //681/E397C5B28088/CCAPI/cc_api_call_disconnect_done:
+   Disposition=0, Interface=0x429576D0, Tag=0x0, Call Id=681,
+   Call Entry(Disconnect Cause=16, Voice Class Cause Code=0, Retry Count=0)
+002904: *May  9 08:59:18.517: //681/E397C5B28088/CCAPI/cc_api_call_disconnect_done:
+   Call Disconnect Event Sent
+002905: *May  9 08:59:18.517: //-1/xxxxxxxxxxxx/CCAPI/cc_free_feature_vsa:
+
+002906: *May  9 08:59:18.517: :cc_free_feature_vsa freeing 44E65CC8
+002907: *May  9 08:59:18.517: //-1/xxxxxxxxxxxx/CCAPI/cc_free_feature_vsa:
+
+002908: *May  9 08:59:18.517:  vsacount in free is 1
+002909: *May  9 08:59:18.517: //680/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Sent:
+BYE sip:1001@192.168.106.8:5060 SIP/2.0
+Via: SIP/2.0/UDP 192.168.105.105:5060;branch=z9hG4bK53142C
+From: <sip:3000@192.168.105.105>;tag=21358EC-1575
+To: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+Date: Mon, 09 May 2016 13:59:17 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+User-Agent: Cisco-SIPGateway/IOS-15.6.1.T1
+Max-Forwards: 70
+Timestamp: 1462802358
+CSeq: 101 BYE
+Reason: Q.850;cause=16
+P-RTP-Stat: PS=67,OS=10561,PR=63,OR=10080,PL=0,JI=0,LA=0,DU=1
+Content-Length: 0
+
+
+002910: *May  9 08:59:18.517: //-1/xxxxxxxxxxxx/SIP/Msg/ccsipDisplayMsg:
+Sent:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.106.8:1025;branch=z9hG4bK4d3bf441
+From: <sip:3000@192.168.106.8>;tag=10bd18dc96fc07b2039fc7f7-2665c799
+To: <sip:1001@192.168.105.105>;tag=21358C4-2511
+Date: Mon, 09 May 2016 13:59:18 GMT
+Call-ID: B649F8D-152511E6-8309AC93-ED4CEDD5@192.168.105.105
+Server: Cisco-SIPGateway/IOS-15.6.1.T1
+CSeq: 101 BYE
+Reason: Q.850;cause=16
+P-RTP-Stat: PS=63,OS=10080,PR=67,OR=10561,PL=0,JI=0,LA=0,DU=1
+Content-Length: 0
+
+
+002911: *May  9 08:59:18.541: //680/E397C5B28088/SIP/Msg/ccsipDisplayMsg:
+Received:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.105.105:5060;branch=z9hG4bK53142C
+From: <sip:3000@192.168.105.105>;tag=21358EC-1575
+To: <sip:1001@192.168.106.8>;tag=20329A68-26CD
+Date: Sun, 08 Jan 2006 18:03:27 GMT
+Call-ID: E4256294-7FA711DA-808DCD00-4F5419B5@192.168.106.8
+Server: Cisco-SIPGateway/IOS-12.x
+Timestamp: 1462802358
+CSeq: 101 BYE
+Reason: Q.850;cause=16
+P-RTP-Stat: PS=63,OS=10080,PR=67,OR=10561,PL=0,JI=0,LA=0,DU=1
+Content-Length: 0
+
+
+002912: *May  9 08:59:18.541: //680/E397C5B28088/CCAPI/cc_api_call_disconnect_done:
+   Disposition=0, Interface=0x429576D0, Tag=0x0, Call Id=680,
+   Call Entry(Disconnect Cause=16, Voice Class Cause Code=0, Retry Count=0)
+002913: *May  9 08:59:18.541: //680/E397C5B28088/CCAPI/cc_api_call_disconnect_done:
+   Call Disconnect Event Sent
+002914: *May  9 08:59:18.541: //-1/xxxxxxxxxxxx/CCAPI/cc_free_feature_vsa:
+
+002915: *May  9 08:59:18.541: :cc_free_feature_vsa freeing 44E65E88
+002916: *May  9 08:59:18.541: //-1/xxxxxxxxxxxx/CCAPI/cc_free_feature_vsa:
+
+002917: *May  9 08:59:18.541:  vsacount in free is 0
+2921-A#
+2921-A#
+2921-A#term def len
+2921-A#

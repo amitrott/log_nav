@@ -109,12 +109,12 @@ class Log_Nav():
 
         return
 
-    def tabbed_regex(self,patt,name="regex_0"):
+    def tabbed_regex(self,patt,name="regex_0",group=1):
         regex = re.compile(patt)
         for line in self.iter_tabbed():
             if(regex.search(line) is not None):
                 result = regex.match(line)
-                self.set_property(name,result.group(1))
+                self.set_property(name,result.group(group))
                 self.exit_tabbed()
                 break
         return
@@ -152,6 +152,16 @@ class Log_Nav():
             patt = str(patt).replace("{{"+prop+"}}",self.dict[prop])
         return patt
 
+
+with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
+    log_nav.move_down_until_regex("INVITE sip")
+    log_nav.set_property("called",log_nav.value_from_regex("INVITE sip:(.*)@"))
+    log_nav.move_down_until_regex(log_nav.compile_compound_regex(".*dest={{called}}"))
+    log_nav.move_up_until_regex(".*//.*/[A-F0-9]+/CCAPI")
+    log_nav.set_property("ccapi_id", log_nav.value_from_regex(".*//.*/([A-F0-9]+)/CCAPI"))
+    log_nav.move_down_until_regex(log_nav.compile_compound_regex(".*//.*/{{ccapi_id}}/CCAPI/cc_api_call_disconnected"))
+    log_nav.tabbed_regex("Cause Value=([0-9]+)","release_code",1)
+    print(log_nav.get_property("release_code"))
 
 with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/line_counts_tabbed.txt") as log_nav:
     log_nav.append_to_output()#print(log_nav.current_line)
