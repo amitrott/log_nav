@@ -1,4 +1,5 @@
 import re
+import math
 
 class Log_Nav():
 
@@ -35,14 +36,24 @@ class Log_Nav():
         return
 
     def go_to_end(self):
-        self.readline()
         while(self.current_line is not ""):
             self.readline()
+            self.y += 1
         self.move_up()
         return
 
+    def go_to_line(self,l,starts_in_one = True):
+        l = l - 1 if starts_in_one else l
+        if l == self.y:
+            return
+        elif l < self.y:
+            self.go_to_start()
+            self.move_down(l)
+        else:
+            self.move_down(l - self.y)
+        return
+
     def readline(self):
-        self.y += 1
         self.current_line = self.file.readline()
         return
 
@@ -50,9 +61,11 @@ class Log_Nav():
         i = 0
         while(i < n):
             self.readline()
+            self.y += 1
             i += 1
             if self.current_line is "":
                 print("End of file reached, cannot move down!")
+                break
         return
 
     def move_up(self,n=1):
@@ -66,6 +79,7 @@ class Log_Nav():
 
         while(self.y < target_pos):
             self.readline()
+            self.y += 1
         return
 
     def move_down_until_regex(self,patt):
@@ -186,3 +200,7 @@ with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/line_counts_tabb
     print(log_nav.get_output())
 
     print(log_nav.compile_compound_regex("this is test's value: {{test}}"))
+
+    log_nav.go_to_start()
+    log_nav.go_to_line(7)
+    print(log_nav.current_line)
