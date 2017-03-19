@@ -4,8 +4,13 @@ import math
 class Log_Nav():
 
     def __init__(self,fname):
+
+        self.BUFFER_SIZE = 10 # lines
+        self.buffer_y = 0
+        self.buffer = []
+
         self.x = 0
-        self.y = 0
+        self.y = -1
         self.A = 0
         self.B = 0
         self.current_line = None
@@ -28,9 +33,33 @@ class Log_Nav():
         self.file.close()
         return
 
+    def load_buffer(self,new_y):
+        if new_y == self.y or new_y < self.buffer_y:
+            return
+        elif new_y < self.y:
+            groups_to_read = math.ceil(new_y / self.BUFFER_SIZE)
+            self.file.seek(0)
+            self.buffer_y = 0
+            while groups_to_read > 0:
+                self.buffer = []
+                for _ in range(0,self.BUFFER_SIZE):
+                    self.buffer.append(self.file.readline())
+                    self.buffer_y += 1
+                groups_to_read -= 1
+        else:
+            groups_to_read = math.ceil((new_y - self.y) / self.BUFFER_SIZE)
+            while groups_to_read > 0:
+                self.buffer = []
+                for _ in range(0,self.BUFFER_SIZE):
+                    self.buffer.append(self.file.readline())
+                    self.buffer_y += 1
+                groups_to_read -= 1
+        return
+
     def go_to_start(self):
         self.x = 0
-        self.y = 0
+        self.y = -1
+        self.buffer_y = 0
         self.file.seek(0)
         self.readline()
         return
@@ -54,14 +83,20 @@ class Log_Nav():
         return
 
     def readline(self):
-        self.current_line = self.file.readline()
+        self.load_buffer(self.y + 1)
+        if self.y < 0:
+            self.y += 1
+        if self.BUFFER_SIZE > 1:
+            self.current_line = self.buffer[abs(self.buffer_y - (self.y + 1) - self.BUFFER_SIZE)]
+        else:
+            self.current_line = self.buffer[0]
         return
 
     def move_down(self,n=1):
         i = 0
         while(i < n):
-            self.readline()
             self.y += 1
+            self.readline()
             i += 1
             if self.current_line is "":
                 print("End of file reached, cannot move down!")
@@ -70,16 +105,18 @@ class Log_Nav():
 
     def move_up(self,n=1):
         target_pos = self.y - n
-        if target_pos < 0: print("Reached start of file, cannot move up!"); return
+        if target_pos < 0: print("Reached start of file, cannot move up!"); self.go_to_start(); return
         elif target_pos == 0:
             self.go_to_start()
-            self.readline()
             return
-        else: self.go_to_start()
 
-        while(self.y < target_pos):
-            self.readline()
-            self.y += 1
+        if target_pos >= self.buffer_y - self.BUFFER_SIZE:
+            while target_pos < self.y:
+                self.y -= 1
+                self.current_line = self.buffer[abs(self.buffer_y - ( self.y + 1 ) - self.BUFFER_SIZE)]
+        else:
+            self.go_to_start()
+            self.move_down(target_pos)
         return
 
     def move_down_until_regex(self,patt):
