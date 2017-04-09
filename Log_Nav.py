@@ -160,7 +160,9 @@ class Log_Nav():
 
         return
 
-    def tabbed_regex(self,patt,name="regex_0",group=1):
+    def tabbed_regex(self,patt,name="regex_0",group=1,reset_position=False):
+        if reset_position:
+            original_line = self.y
         regex = re.compile(patt)
         for line in self.iter_tabbed():
             if(regex.search(line) is not None):
@@ -168,6 +170,8 @@ class Log_Nav():
                 self.set_property(name,result.group(group))
                 self.exit_tabbed()
                 break
+        if reset_position:
+            self.go_to_line(original_line,False)
         return
 
     def append_to_output(self,text=None,whole_line=True):
@@ -209,6 +213,16 @@ with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsi
     log_nav.set_property("called",log_nav.value_from_regex("INVITE sip:(.*)@"))
     log_nav.move_down_until_regex(log_nav.compile_compound_regex(".*dest={{called}}"))
     log_nav.move_up_until_regex(".*//.*/[A-F0-9]+/CCAPI")
+
+    print(log_nav.current_line)
+    log_nav.tabbed_regex("dest=(.*)","destination",reset_position=True)
+    print(log_nav.get_property("destination"))
+    print(log_nav.current_line)
+    log_nav.tabbed_regex(".*ani=(.*)","cisco-ani",reset_position=True)
+    print(log_nav.get_property("cisco-ani"))
+    print(log_nav.current_line)
+    exit()
+
     log_nav.set_property("ccapi_id", log_nav.value_from_regex(".*//.*/([A-F0-9]+)/CCAPI"))
     log_nav.move_down_until_regex(log_nav.compile_compound_regex(".*//.*/{{ccapi_id}}/CCAPI/cc_api_call_disconnected"))
     log_nav.tabbed_regex("Cause Value=([0-9]+)","release_code",1)
