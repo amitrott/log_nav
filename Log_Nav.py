@@ -34,7 +34,7 @@ class Log_Nav():
         return
 
     def load_buffer(self,new_y):
-        if new_y == self.y or new_y < self.buffer_y:
+        if (new_y == self.y or new_y <= self.buffer_y) and self.buffer_y > 0:
             return
         elif new_y < self.y:
             groups_to_read = math.ceil(new_y / self.BUFFER_SIZE)
@@ -86,8 +86,8 @@ class Log_Nav():
         self.load_buffer(self.y + 1)
         if self.y < 0:
             self.y += 1
-        if self.BUFFER_SIZE > 1:
-            self.current_line = self.buffer[abs(self.buffer_y - (self.y + 1) - self.BUFFER_SIZE)]
+        if self.BUFFER_SIZE > 0 and self.buffer_y > 0:
+            self.current_line = self.buffer[abs(self.buffer_y - self.y - self.BUFFER_SIZE)]
         else:
             self.current_line = self.buffer[0]
         return
@@ -110,7 +110,7 @@ class Log_Nav():
             self.go_to_start()
             return
 
-        if target_pos >= self.buffer_y - self.BUFFER_SIZE:
+        if target_pos >= self.buffer_y:
             while target_pos < self.y:
                 self.y -= 1
                 self.current_line = self.buffer[abs(self.buffer_y - ( self.y + 1 ) - self.BUFFER_SIZE)]
