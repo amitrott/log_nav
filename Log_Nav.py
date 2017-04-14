@@ -119,21 +119,29 @@ class Log_Nav():
             self.move_down(target_pos)
         return
 
-    def move_down_until_regex(self,patt):
+    def move_down_until_regex(self,patt,max_lines=0):
         regex = re.compile(patt)
 
+        i = 0
         while(regex.match(self.current_line) is None and self.current_line is not ""):
+            if(max_lines > 0 and i >= max_lines):
+                break
             self.move_down()
+            i += 1
 
         if self.current_line is "":
             print("End of file reached with no match for " + patt)
         return
 
-    def move_up_until_regex(self,patt):
+    def move_up_until_regex(self,patt,max_lines=0):
         regex = re.compile(patt)
         i = self.y
 
+        top = self.y - max_lines
+
         while (regex.match(self.current_line) is None and i >= 0):
+            if(max_lines != 0 and i <= top):
+                break
             self.move_up()
             i -= 1
 
@@ -207,6 +215,14 @@ class Log_Nav():
             patt = str(patt).replace("{{"+prop+"}}",self.dict[prop])
         return patt
 
+
+with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
+    log_nav.move_down_until_regex("zzzzzzz")
+    #print(log_nav.current_line)
+    print(log_nav.current_line+" "+str(log_nav.y))
+    log_nav.move_up_until_regex("zzzzzzz",5)
+    print(log_nav.current_line+" "+str(log_nav.y))
+    exit()
 
 with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
     log_nav.move_down_until_regex("INVITE sip")
