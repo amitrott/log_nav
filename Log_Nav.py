@@ -215,6 +215,31 @@ class Log_Nav():
             patt = str(patt).replace("{{"+prop+"}}",self.dict[prop])
         return patt
 
+    def for_each_pattern(self,patt,cb_fn):
+        orig_line = self.y
+
+        self.go_to_start()
+        while self.current_line is not "":
+            self.move_down_until_regex(patt)
+            curr_line = self.y
+            cb_fn()
+            self.go_to_line(curr_line + 1,False)
+
+        self.go_to_line(orig_line,False)
+
+        return
+
+
+with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
+
+    def callback_function():
+        log_nav.move_up_until_regex("(?!Via).*SIP/2\.0.*")
+        print(log_nav.current_line + "  line: "+str(log_nav.y))
+        return
+
+    log_nav.for_each_pattern("Call-ID",callback_function)
+
+    exit()
 
 with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
     log_nav.move_down_until_regex("zzzzzzz")
