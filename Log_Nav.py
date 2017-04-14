@@ -236,11 +236,12 @@ class Log_Nav():
         orig_line = self.y
 
         self.go_to_start()
+        self.move_down_until_regex(patt)
         while self.current_line is not "":
-            self.move_down_until_regex(patt)
             curr_line = self.y
             cb_fn()
             self.go_to_line(curr_line + 1,False)
+            self.move_down_until_regex(patt)
 
         self.go_to_line(orig_line,False)
 
