@@ -229,15 +229,23 @@ class Log_Nav():
 
         return
 
+    def test_regex(self,patt):
+        regex = re.compile(patt)
+        return regex.search(self.current_line)
+
 
 with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
 
     def callback_function():
         log_nav.move_up_until_regex("(?!Via).*SIP/2\.0.*")
-        print(log_nav.current_line + "  line: "+str(log_nav.y))
+        if not log_nav.test_regex("SIP/2\.0 1") and not log_nav.test_regex("SIP/2\.0 2"):
+            print(log_nav.current_line + "  line: "+str(log_nav.y))
         return
 
-    log_nav.for_each_pattern("Call-ID",callback_function)
+    log_nav.move_down_until_regex("Call-ID")
+    log_nav.set_property("callid",log_nav.value_from_regex("Call-ID: (.*)"))
+
+    log_nav.for_each_pattern(log_nav.compile_compound_regex("Call-ID: {{callid}}"),callback_function)
 
     exit()
 
