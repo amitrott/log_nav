@@ -127,7 +127,7 @@ class Log_Nav():
             self.go_to_start()
             return
 
-        if target_pos >= self.buffer_y:
+        if target_pos >= (self.buffer_y - self.BUFFER_SIZE):
             while target_pos < self.y:
                 self.y -= 1
                 self.current_line = self.buffer[abs(self.buffer_y - ( self.y + 1 ) - self.BUFFER_SIZE)]
