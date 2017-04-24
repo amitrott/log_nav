@@ -136,12 +136,17 @@ class Log_Nav():
             self.move_down(target_pos)
         return
 
-    def move_down_until_regex(self,patt,max_lines=0):
+    def move_down_until_regex(self,patt,max_lines=0,stop_patt = "(?!)"):
         regex = re.compile(patt)
+
+        stop_regex = re.compile(stop_patt)
+        #stop_patt: https://codegolf.stackexchange.com/questions/18393/shortest-unmatchable-regular-expression
 
         i = 0
         while(regex.match(self.current_line) is None and self.current_line is not ""):
             if(max_lines > 0 and i >= max_lines):
+                break
+            if(stop_regex.search(self.current_line)):
                 break
             self.move_down()
             i += 1
@@ -150,14 +155,18 @@ class Log_Nav():
             print("End of file reached with no match for " + patt)
         return
 
-    def move_up_until_regex(self,patt,max_lines=0):
+    def move_up_until_regex(self,patt,max_lines=0,stop_patt="(?!)"):
         regex = re.compile(patt)
         i = self.y
 
         top = self.y - max_lines
 
+        stop_regex = re.compile(stop_patt)
+
         while (regex.match(self.current_line) is None and i >= 0):
             if(max_lines != 0 and i <= top):
+                break
+            if(stop_regex.search(self.current_line)):
                 break
             self.move_up()
             i -= 1

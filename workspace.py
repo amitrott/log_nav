@@ -18,6 +18,15 @@ Copyright 2017 Angelo Mitrotti
 from Log_Nav import Log_Nav
 
 with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
+    log_nav.move_down_until_regex(".*CCAPI.*",stop_patt="[0-9]+:")
+    print(log_nav.current_line)
+    log_nav.move_down_until_regex(".*term def len.*")
+    print(log_nav.current_line)
+    log_nav.move_up_until_regex(".*CCAPI.*",stop_patt="[0-9]+:")
+    print(log_nav.current_line)
+    exit()
+
+with Log_Nav("/home/angelo/PycharmProjects/log_nav/text_samples/ccsip-ccapi-ccsip.txt") as log_nav:
 
     def callback_function():
         log_nav.move_up_until_regex("(?!Via).*SIP/2\.0.*")
