@@ -1,0 +1,965 @@
+Router#sh ver
+Cisco IOS Software, C2600 Software (C2600-IPVOICE-M), Version 12.3(11)T3, RELEASE SOFTWARE (fc4)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2005 by Cisco Systems, Inc.
+Compiled Tue 25-Jan-05 15:48 by pwade
+
+ROM: System Bootstrap, Version 12.2(7r) [cmong 7r], RELEASE SOFTWARE (fc1)
+
+Router uptime is 4 hours, 57 minutes
+System returned to ROM by reload
+System image file is "flash:c2600-ipvoice-mz.123-11.T3.bin"
+
+Cisco 2610XM (MPC860P) processor (revision 0x100) with 118784K/12288K bytes of memory.
+Processor board ID JAD06300JWH (2604810280)
+M860 processor: part number 5, mask 2
+1 FastEthernet interface
+4 ISDN Basic Rate interfaces
+32K bytes of NVRAM.
+49152K bytes of processor board System flash (Read/Write)
+
+Configuration register is 0x2102
+
+Router#
+
+
+
+
+
+
+Router#sh run
+Building configuration...
+
+Current configuration : 2678 bytes
+!
+version 12.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+enable password cisco
+!
+username Admin password 0 fredaro
+memory-size iomem 10
+no network-clock-participate slot 1
+no network-clock-participate wic 0
+no aaa new-model
+ip subnet-zero
+ip cef
+!
+!
+ip dhcp excluded-address 192.168.0.1 192.168.0.120
+ip dhcp excluded-address 192.168.0.140 192.168.0.254
+!
+ip dhcp pool TOIP
+   network 192.168.0.0 255.255.255.0
+   default-router 192.168.0.200
+   option 150 ip 192.168.0.200
+   dns-server 195.68.0.1
+!
+!
+no ftp-server write-enable
+isdn switch-type basic-net3
+voice-card 1
+ codec complexity high
+ dsp services dspfarm
+!
+!
+!
+voice call send-alert
+voice rtp send-recv
+!
+voice service pots
+ supported-language fr
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 192.168.0.200 255.255.255.0
+ speed 100
+ half-duplex
+!
+interface BRI1/0
+ no ip address
+ isdn switch-type basic-net3
+ isdn incoming-voice voice
+ isdn send-alerting
+ isdn sending-complete
+!
+interface BRI1/1
+ no ip address
+ isdn switch-type basic-net3
+!
+interface BRI1/2
+ no ip address
+ isdn switch-type basic-net3
+!
+interface BRI1/3
+ no ip address
+ isdn switch-type basic-net3
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 192.168.0.253
+!
+ip http server
+ip http path flash:
+!
+!
+tftp-server flash:P00305000301.bin
+tftp-server flash:P00303020214.bin
+tftp-server flash:P00305000301.sbn
+tftp-server flash:P00403020214.bin
+tftp-server flash:S00103020002.bin
+!
+control-plane
+!
+!
+!
+voice-port 1/0/0
+ compand-type a-law
+ cptone FR
+!
+voice-port 1/0/1
+!
+voice-port 1/1/0
+!
+voice-port 1/1/1
+!
+!
+!
+!
+dial-peer voice 1 pots
+ destination-pattern 0T
+ progress_ind alert enable 8
+ progress_ind progress enable 8
+ progress_ind connect enable 8
+ no digit-strip
+ direct-inward-dial
+ port 1/0/0
+ forward-digits all
+!
+!
+telephony-service
+ load 7960-7940 P00305000301
+ max-ephones 36
+ max-dn 144
+ ip source-address 192.168.0.200 port 2000
+ time-format 24
+ date-format dd-mm-yy
+ system message IP - ACS
+ user-locale FR
+ network-locale FR
+ create cnf-files version-stamp Jan 01 2002 00:00:00
+ keepalive 45
+ max-conferences 4
+ moh music-on-hold.au
+ web admin system name Admin password fredaro
+ dn-webedit
+ time-webedit
+ transfer-system full-consult
+ transfer-pattern T
+!
+!
+ephone-dn  1
+ number 516
+ name fred
+!
+!
+ephone-dn  2
+ number 515
+ name david
+!
+!
+ephone  1
+ username "fred" password fredaro
+ mac-address 0012.43B7.3EE6
+ type 7960
+ button  1:1
+ pin 0000
+!
+!
+!
+ephone  2
+ username "david" password fredaro
+ mac-address 0012.D940.D75E
+ type 7940
+ button  1:2
+ pin 0000
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login local
+!
+!
+end
+
+Router#
+
+
+
+
+
+
+
+
+
+Router#sh diag
+Slot 0:
+        C2610XM 1FE Mainboard Port adapter, 1 port
+        Port adapter is analyzed
+        Port adapter insertion time unknown
+        EEPROM contents at hardware discovery:
+        Hardware Revision        : 1.0
+        PCB Serial Number        : JAD06300JWH (2604810280)
+        Part Number              : 73-7677-02
+        RMA History              : 00
+        RMA Number               : 0-0-0-0
+        Board Revision           : A0
+        Deviation Number         : 0-0
+        EEPROM format version 4
+        EEPROM contents (hex):
+          0x00: 04 FF 40 03 6A 41 01 00 C1 18 4A 41 44 30 36 33
+          0x10: 30 30 4A 57 48 20 28 32 36 30 34 38 31 30 32 38
+          0x20: 30 29 82 49 1D FD 02 04 00 81 00 00 00 00 42 41
+          0x30: 30 80 00 00 00 00 FF FF FF FF FF FF FF FF FF FF
+          0x40: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x50: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x60: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x70: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+
+Slot 1:
+        Voice NM-HD-2V (1 on-board DSP) Port adapter
+        Port adapter is analyzed
+        Port adapter insertion time unknown
+        EEPROM contents at hardware discovery:
+        Hardware Revision        : 5.1
+        Top Assy. Part Number    : 800-21591-01
+        Board Revision           : B0
+        Deviation Number         : 0-0
+        Fab Version              : 03
+        PCB Serial Number        : FOC084641KP
+        RMA Test History         : 00
+        RMA Number               : 0-0-0-0
+        RMA History              : 00
+        Version Identifier       : V
+        EEPROM format version 4
+        EEPROM contents (hex):
+          0x00: 04 FF 40 03 9B 41 05 01 C0 46 03 20 00 54 57 01
+          0x10: 42 42 30 80 00 00 00 00 02 03 C1 8B 46 4F 43 30
+          0x20: 38 34 36 34 31 4B 50 03 00 81 00 00 00 00 04 00
+          0x30: 89 56 00 00 00 FF FF FF FF FF FF FF FF FF FF FF
+          0x40: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x50: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x60: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x70: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+
+        WIC Slot 0:
+        BRI - Voice daughter card (2 port)
+        Hardware Revision        : 1.1
+        Top Assy. Part Number    : 800-21861-01
+        Board Revision           : B0
+        Deviation Number         : 0-0
+        Fab Version              : 01
+        PCB Serial Number        : FOC08280D0C
+        RMA Test History         : 00
+        RMA Number               : 0-0-0-0
+        RMA History              : 00
+        Version Identifier       : V
+        EEPROM format version 4
+        EEPROM contents (hex):
+          0x00: 04 FF 40 00 51 41 01 01 C0 46 03 20 00 55 65 01
+          0x10: 42 42 30 80 00 00 00 00 02 01 C1 8B 46 4F 43 30
+          0x20: 38 32 38 30 44 30 43 03 00 81 00 00 00 00 04 00
+          0x30: 89 56 00 00 00 FF FF FF FF FF FF FF FF FF FF FF
+          0x40: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x50: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x60: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x70: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+
+        WIC Slot 1:
+        BRI - Voice daughter card (2 port)
+        Hardware Revision        : 1.1
+        Top Assy. Part Number    : 800-21861-01
+        Board Revision           : B0
+        Deviation Number         : 0-0
+        Fab Version              : 01
+        PCB Serial Number        : FOC08280CWQ
+        RMA Test History         : 00
+        RMA Number               : 0-0-0-0
+        RMA History              : 00
+        Version Identifier       : V
+        EEPROM format version 4
+        EEPROM contents (hex):
+          0x00: 04 FF 40 00 51 41 01 01 C0 46 03 20 00 55 65 01
+          0x10: 42 42 30 80 00 00 00 00 02 01 C1 8B 46 4F 43 30
+          0x20: 38 32 38 30 43 57 51 03 00 81 00 00 00 00 04 00
+          0x30: 89 56 00 00 00 FF FF FF FF FF FF FF FF FF FF FF
+          0x40: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x50: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x60: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+          0x70: FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+
+
+Router#
+
+
+
+
+Router#sh controller
+Interface FastEthernet0/0
+Hardware is AMD Am79c977
+ADDR: 83903190, FASTSEND: 8017BB40, MCI_INDEX: 0
+DIST ROUTE ENABLED: 0
+Route Cache Flag: 11
+ LADRF=0x0000 0x0100 0x0000 0x0000
+ CSR0  =0x00000042, CSR3  =0x00000004, CSR4  =0x0000080C, CSR15 =0x00000000
+ CSR80 =0x00001800, CSR114=0x00000000, CRDA  =0x00000000, CXDA  =0x00000000
+ BCR9 =0x00000000 (half-duplex)
+ CSR5  =0x00000001, CSR7  =0x00000008, CSR100=0x00000000, CSR125=0x00005C3C
+ BCR2  =0x00001000, BCR9  =0x00000000, BCR18 =0x00001880, BCR22 =0x00001818
+ BCR25 =0x00000200, BCR26 =0x00000100, BCR27 =0x00000000, BCR32 =0x00004D80
+ HW filtering information:
+  Promiscuous Mode Disabled, PHY Addr Enabled, Broadcast Addr Enabled
+  PHY Addr=000A.8AA5.F200, Multicast Filter=0x0000 0x0100 0x0000 0x0000
+ amdp2_instance=0x839049B8, registers=0x40000000, ib=0x7522580
+ rx ring entries=64, tx ring entries=128
+ rxring=0x75225E0, rxr shadow=0x83904C30, rx_head=4, rx_tail=0
+ txring=0x7522A20, txr shadow=0x83904D5C, tx_head=83, tx_tail=83, tx_count=0
+ Software MAC address filter(hash:length/addr/mask/hits):
+  0xC0:  0  0100.0ccc.cccc  0000.0000.0000         0
+ spurious_idon=0, throttled=0, enabled=0, disabled=0
+ rx_framing_err=0, rx_overflow_err=0, rx_buffer_err=0
+ rx_bpe_err=0, rx_soft_overflow_err=0, rx_no_enp=0, rx_discard=0
+ tx_one_col_err=0, tx_more_col_err=0, tx_no_enp=0, tx_deferred_err=0
+ tx_underrun_err=0, tx_late_collision_err=0, tx_loss_carrier_err=1
+ tx_exc_collision_err=0, tx_buff_err=0, fatal_tx_err=0
+ hsrp_conf=0, need_af_check=0
+ tx_limited=0(64)
+ PHY registers:
+  Register 0x00:   2000  780D  0013  78E2  0081  0000  0004  2001
+  Register 0x08:   0000  FFFF  FFFF  FFFF  FFFF  FFFF  FFFF  FFFF
+  Register 0x10:   0104  4400  0000  0054        0000  0000  0000
+  Register 0x18:   0000  0000  00C8  0000  FFFF
+BRI unit 8:
+   Current port master clock:recovered from BRI1/0
+layer 1 operating in LT-T mode.
+Layer 1 is ACTIVATED. (ISDN L1 State F7)
+D Channel Information:
+idb at 0x83919578, driver data structure at 0x83944460
+Infineon Chip Version 0x1
+Infineon Registers:
+Int. Status Register [ISTA]=0x00, Aux. Int. [AUXI]=0x00
+D-channel: Int. Status Reg: [ISTAD]=0x00, Status. Reg: [STARD]=0x48
+Mode Reg: [TR_MODE]=0x01
+Transceiver Reg: [TR_CONF0]=0x00
+Test mode Reg: [TMD]=0x00
+IOM Control Reg: [IOM_CR]=0x08
+Status Register [STAR]=0x48, Mode Register [MODED]=0xCA
+Serial Data Strobe Control Reg: [SDS1_CR]=0x00, [SDS2_CR]=0x00
+RX Buffer Descriptor is at 0x8391544C, Buffer size 1524
+pak=0x83944E08 data_ptr=0x7571894 partial_size=0x0
+
+TX Buffer Descriptor is at 0x83914BC4
+pak=0x0 data_ptr=0x0 partial_size=0x0
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B1 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B2 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+
+BRI unit 9:
+   Current port master clock:recovered from BRI1/0
+layer 1 operating in LT-T mode.
+Layer 1 is DEACTIVATED. (ISDN L1 State F3)
+D Channel Information:
+idb at 0x83945C8C, driver data structure at 0x8394F604
+Infineon Chip Version 0x1
+Infineon Registers:
+Int. Status Register [ISTA]=0x00, Aux. Int. [AUXI]=0x00
+D-channel: Int. Status Reg: [ISTAD]=0x00, Status. Reg: [STARD]=0x40
+Mode Reg: [TR_MODE]=0x01
+Transceiver Reg: [TR_CONF0]=0x00
+Test mode Reg: [TMD]=0x00
+IOM Control Reg: [IOM_CR]=0x08
+Status Register [STAR]=0x40, Mode Register [MODED]=0xCA
+Serial Data Strobe Control Reg: [SDS1_CR]=0x00, [SDS2_CR]=0x00
+RX Buffer Descriptor is at 0x8394F9C8, Buffer size 1524
+pak=0x83950380 data_ptr=0x75744D4 partial_size=0x0
+
+TX Buffer Descriptor is at 0x8394F984
+pak=0x0 data_ptr=0x0 partial_size=0x0
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B1 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B2 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+
+BRI unit 10:
+   Current port master clock:recovered from BRI1/0
+layer 1 operating in LT-T mode.
+Layer 1 is DEACTIVATED. (ISDN L1 State F3)
+D Channel Information:
+idb at 0x83952A58, driver data structure at 0x8395C49C
+Infineon Chip Version 0x1
+Infineon Registers:
+Int. Status Register [ISTA]=0x00, Aux. Int. [AUXI]=0x00
+D-channel: Int. Status Reg: [ISTAD]=0x00, Status. Reg: [STARD]=0x40
+Mode Reg: [TR_MODE]=0x01
+Transceiver Reg: [TR_CONF0]=0x00
+Test mode Reg: [TMD]=0x00
+IOM Control Reg: [IOM_CR]=0x08
+Status Register [STAR]=0x40, Mode Register [MODED]=0xCA
+Serial Data Strobe Control Reg: [SDS1_CR]=0x00, [SDS2_CR]=0x00
+RX Buffer Descriptor is at 0x8395C860, Buffer size 1524
+pak=0x8395D218 data_ptr=0x7576694 partial_size=0x0
+
+TX Buffer Descriptor is at 0x8395C81C
+pak=0x0 data_ptr=0x0 partial_size=0x0
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B1 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B2 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+
+BRI unit 11:
+   Current port master clock:recovered from BRI1/0
+layer 1 operating in LT-T mode.
+Layer 1 is DEACTIVATED. (ISDN L1 State F3)
+D Channel Information:
+idb at 0x8395DD94, driver data structure at 0x839677D8
+Infineon Chip Version 0x1
+Infineon Registers:
+Int. Status Register [ISTA]=0x00, Aux. Int. [AUXI]=0x00
+D-channel: Int. Status Reg: [ISTAD]=0x00, Status. Reg: [STARD]=0x40
+Mode Reg: [TR_MODE]=0x01
+Transceiver Reg: [TR_CONF0]=0x00
+Test mode Reg: [TMD]=0x00
+IOM Control Reg: [IOM_CR]=0x08
+Status Register [STAR]=0x40, Mode Register [MODED]=0xCA
+Serial Data Strobe Control Reg: [SDS1_CR]=0x00, [SDS2_CR]=0x00
+RX Buffer Descriptor is at 0x83967B9C, Buffer size 1524
+pak=0x83968554 data_ptr=0x7577AD4 partial_size=0x0
+
+TX Buffer Descriptor is at 0x83967B58
+pak=0x0 data_ptr=0x0 partial_size=0x0
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B1 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+B2 Channel Information:
+  0 missed datagrams, 0 overruns
+  0 bad datagram encapsulations, 0 memory errors
+  0 transmitter underruns  0 d channel collisions
+
+
+
+
+Router#
+
+
+
+
+
+
+Router#sh isdn status
+Global ISDN Switchtype = basic-net3
+ISDN BRI1/0 interface
+        dsl 8, interface ISDN Switchtype = basic-net3
+    Layer 1 Status:
+        ACTIVE
+    Layer 2 Status:
+        TEI = 64, Ces = 1, SAPI = 0, State = MULTIPLE_FRAME_ESTABLISHED
+    Layer 3 Status:
+        0 Active Layer 3 Call(s)
+    Active dsl 8 CCBs = 0
+    The Free Channel Mask:  0x80000003
+ISDN BRI1/1 interface
+        dsl 9, interface ISDN Switchtype = basic-net3
+    Layer 1 Status:
+        DEACTIVATED
+    Layer 2 Status:
+        Layer 2 NOT Activated
+    Layer 3 Status:
+        0 Active Layer 3 Call(s)
+    Active dsl 9 CCBs = 0
+    The Free Channel Mask:  0x80000003
+ISDN BRI1/2 interface
+        dsl 10, interface ISDN Switchtype = basic-net3
+    Layer 1 Status:
+        DEACTIVATED
+    Layer 2 Status:
+        Layer 2 NOT Activated
+    Layer 3 Status:
+        0 Active Layer 3 Call(s)
+    Active dsl 10 CCBs = 0
+    The Free Channel Mask:  0x80000003
+ISDN BRI1/3 interface
+        dsl 11, interface ISDN Switchtype = basic-net3
+    Layer 1 Status:
+        DEACTIVATED
+    Layer 2 Status:
+        Layer 2 NOT Activated
+    Layer 3 Status:
+        0 Active Layer 3 Call(s)
+    Active dsl 11 CCBs = 0
+    The Free Channel Mask:  0x80000003
+    Total Allocated ISDN CCBs = 0
+Router#
+
+
+
+not show isdn service command
+
+
+
+
+
+
+Router#debug isdn q931
+debug isdn q931 is              ON.
+Router#
+Router#
+Router#
+Router#
+Router#
+Router#
+Router#
+Router#
+Router#
+Router#
+*Mar 22 17:05:10.866: ISDN BR1/0 Q931: Applying typeplan for sw-type 0x1 is 0x0 0x0, Calling num 516
+*Mar 22 17:05:10.874: ISDN BR1/0 Q931: Applying typeplan for sw-type 0x1 is 0x0 0x0, Called num 00603462158
+*Mar 22 17:05:10.874: ISDN BR1/0 Q931: TX -> SETUP pd = 8  callref = 0x01
+        Bearer Capability i = 0x8090A3
+                Standard = CCITT
+                Transer Capability = Speech
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+        Progress Ind i = 0x8183 - Origination address is non-ISDN
+        Calling Party Number i = 0x0080, '516'
+                Plan:Unknown, Type:Unknown
+        Called Party Number i = 0x80, '00603462158'
+                Plan:Unknown, Type:Unknown
+        Sending Complete
+*Mar 22 17:05:11.119: ISDN BR1/0 Q931: RX <- CALL_PROC pd = 8  callref = 0x81
+        Channel ID i = 0x89
+*Mar 22 17:05:11.395: ISDN BR1/0 Q931: RX <- DISCONNECT pd = 8  callref = 0x81
+        Cause i = 0x879F - Normal, unspecified
+*Mar 22 17:05:11.407: ISDN BR1/0 Q931: TX -> RELEASE pd = 8  callref = 0x01
+        Cause i = 0x809F - Normal, unspecified
+*Mar 22 17:05:11.479: ISDN BR1/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0x81
+*Mar 22 17:05:15.410: %ISDN-6-LAYER2DOWN: Layer 2 for Interface BR1/0, TEI 64 changed to down
+*Mar 22 17:05:15.414: ISDN BR1/0 Q931: Ux_DLRelInd: DL_REL_IND received from L2
+*Mar 22 17:05:15.450: %ISDN-6-LAYER2UP: Layer 2 for Interface BR1/0, TEI 64 changed to up
+Router#
+Router#
+Router#
+Router#
+
+
+
+
+Router#debug isdn events
+debug isdn event is             ON.
+Router#
+Router#
+Router#
+Router#
+Router#
+*Mar 22 17:06:03.753: ISDN BR1/0 EVENT: process_bri_call: call id 0x8002, called_number 00603462158, Guid BR1/0speed 0,
+call type VOICE, calling_number 516
+*Mar 22 17:06:04.025: ISDN BR1/0 EVENT: process_rxstate: ces/callid 1/0x8002 calltype 2 HOST_PROCEEDING
+*Mar 22 17:06:04.298: ISDN BR1/0 EVENT: process_rxstate: ces/callid 1/0x8002 calltype 2 HOST_DISCONNECT
+*Mar 22 17:06:04.386: ISDN BR1/0 EVENT: process_rxstate: ces/callid 1/0x8002 calltype 2 HOST_DISCONNECT_ACK
+*Mar 22 17:06:08.340: %ISDN-6-LAYER2DOWN: Layer 2 for Interface BR1/0, TEI 64 changed to down
+*Mar 22 17:06:08.360: %ISDN-6-LAYER2UP: Layer 2 for Interface BR1/0, TEI 64 changed to up
+
+
+
+
+
+
+Router#debug isdn standard
+Router#
+Router#
+Router#
+Router#
+Router#
+Router#
+Router#
+*Mar 22 17:07:08.363: ISDN BR1/0 Q931: Ux_DLRelInd: DL_REL_IND received from L2
+*Mar 22 17:07:09.917: ISDN BR1/0 EVENTd: isdn_get_guid: Got Guid BR1/0
+*Mar 22 17:07:09.921: ISDN BR1/0 EVENT: process_bri_call: call id 0x8003, called_number 00603462158, Guid BR1/0speed 0,
+call type VOICE, calling_number 516Received pdata len 0x3F data:1C 39 9E 1 0 3 67 74 64 0 0 0 2E 49 41 4D 2C D A 47 43 4
+9 2C 61 36 64 62 31 65 34 61 39 61 32 62 31 31 64 39 38 30 30 62 65 32 65 61 61 36 38 66 30 35 65 30 D A D A 1E 2 81 83
+*Mar 22 17:07:09.941: ISDN BR1/0 EVENTd: process_bri_call: No name in GTD
+*Mar 22 17:07:09.941: ISDN BR1/0 EVENTd: process_bri_call: Name Modified by Calldecode
+Name Type 0x0, cs 0x0, ie_val 0x28, pi 0x0, avail 0x0
+        fachd len 0x0 data:
+        inpdu len 0x0 data:
+        name len 0x4 data:66 72 65 64
+*Mar 22 17:07:09.949: ISDN BR1/0 Q931: Applying typeplan for sw-type 0x1 is 0x0 0x0, Calling num 516
+*Mar 22 17:07:09.949: ISDN BR1/0 EVENTd: calltrkr_setup_received: isdn_info=2207362932l, call_id=0x8003 ORIGINATE
+*Mar 22 17:07:09.949: ISDN BR1/0 EVENTd: calltrkr_setup_received: calltracker disabled
+*Mar 22 17:07:09.957: ISDN BR1/0 Q931: TX -> SETUP pd = 8  callref = 0x03
+        Bearer Capability i = 0x8090A3
+                Standard = CCITT
+                Transer Capability = Speech
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+        Progress Ind i = 0x8183 - Origination address is non-ISDN
+        Calling Party Number i = 0x0080, '516'
+                Plan:Unknown, Type:Unknown
+        Called Party Number i = 0x80, '00603462158'
+                Plan:Unknown, Type:Unknown
+        Sending Complete
+*Mar 22 17:07:10.226: ISDN BR1/0 Q931: RX <- CALL_PROC pd = 8  callref = 0x83
+        Channel ID i = 0x89
+*Mar 22 17:07:10.234: ISDN BR1/0 EVENT: process_rxstate: ces/callid 1/0x8003 calltype 2 HOST_PROCEEDING
+*Mar 22 17:07:10.518: ISDN BR1/0 Q931: RX <- DISCONNECT pd = 8  callref = 0x83
+        Cause i = 0x879F - Normal, unspecified
+*Mar 22 17:07:10.522: ISDN BR1/0 EVENT: process_rxstate: ces/callid 1/0x8003 calltype 2 HOST_DISCONNECT
+*Mar 22 17:07:10.522: ISDN BR1/0 EVENTd: process_rxstate: cause=0x1F (31), cause_present=1
+*Mar 22 17:07:10.526: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391AF74, call_id=0x8003
+*Mar 22 17:07:10.526: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8003
+*Mar 22 17:07:10.526: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8003
+*Mar 22 17:07:10.526: ISDN BR1/0 EVENTd: host_disconnect: call to <unknown> terminated
+*Mar 22 17:07:10.530: ISDN  CDAPI: cdapi_find_tsm found a GTD message REL,
+PRN,isdn*,,,
+
+:
+        end of gtd length is 22
+*Mar 22 17:07:10.530: ISDN BR1/0 CDAPI: cdapi_mib_update msg CALL_DISC, remote number 00603462158, connected? No
+*Mar 22 17:07:10.530: ISDN BR1/0 EVENTd: process_disc_ack: call id 0x8003, ces 1, call type VOICE cause 0x0
+*Mar 22 17:07:10.534: ISDN BR1/0 Q931: TX -> RELEASE pd = 8  callref = 0x03
+        Cause i = 0x809F - Normal, unspecified
+*Mar 22 17:07:10.606: ISDN BR1/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0x83
+*Mar 22 17:07:10.610: ISDN  EVENTd: cc_clear_free_list freed 0x83951BF4
+*Mar 22 17:07:10.610: ISDN BR1/0 EVENT: process_rxstate: ces/callid 1/0x8003 calltype 2 HOST_DISCONNECT_ACK
+*Mar 22 17:07:10.610: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391AF74, call_id=0x8003
+*Mar 22 17:07:10.614: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8003
+*Mar 22 17:07:10.614: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8003
+*Mar 22 17:07:10.614: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391AF74, call_id=0x8003
+*Mar 22 17:07:10.614: ISDN BR1/0 EVENTd: host_disconnect_ack: call type is VOICE
+*Mar 22 17:07:10.618: ISDN BR1/0 CDAPI: cdapi_mib_update msg CALL_DISC, remote number , connected? No
+*Mar 22 17:07:14.557: ISDN BR1/0 Q931: Ux_DLRelInd: DL_REL_IND received from L2
+
+
+
+
+
+
+
+
+Router#debug bri-interface
+Basic Rate network interface debugging is on
+Router#
+*Mar 22 17:08:24.600: dchan tx start
+*Mar 22 17:08:24.604: dchan tx intr
+*Mar 22 17:08:29.151: dchan tx start
+*Mar 22 17:08:29.171: dchan tx intr
+*Mar 22 17:08:29.424: dchan tx start
+*Mar 22 17:08:29.428: dchan tx intr
+*Mar 22 17:08:29.692: dchan tx start
+*Mar 22 17:08:29.696: dchan tx intr
+*Mar 22 17:08:29.700: dchan tx start
+*Mar 22 17:08:29.708: dchan tx intr
+*Mar 22 17:08:29.772: dchan tx start
+*Mar 22 17:08:29.776: dchan tx intr
+*Mar 22 17:08:33.687: dchan tx start
+*Mar 22 17:08:33.691: dchan tx intr
+*Mar 22 17:08:33.695: dchan tx start
+*Mar 22 17:08:33.699: dchan tx intr
+
+
+
+
+
+
+Router#debug isdn events detail
+debug isdn event detail is      ON.
+Router#
+Router#
+Router#
+Router#
+*Mar 22 17:09:20.752: ISDN BR1/0 EVENTd: isdn_get_guid: Got Guid BR1/0Received pdata len 0x3F data:1C 39 9E 1 0 3 67 74
+64 0 0 0 2E 49 41 4D 2C D A 47 43 49 2C 66 35 39 62 31 65 30 31 39 61 32 62 31 31 64 39 38 30 31 31 65 32 65 61 61 36 38
+ 66 30 35 65 30 D A D A 1E 2 81 83
+*Mar 22 17:09:20.764: ISDN BR1/0 EVENTd: process_bri_call: No name in GTD
+*Mar 22 17:09:20.764: ISDN BR1/0 EVENTd: process_bri_call: Name Modified by Calldecode
+Name Type 0x0, cs 0x0, ie_val 0x28, pi 0x0, avail 0x0
+        fachd len 0x0 data:
+        inpdu len 0x0 data:
+        name len 0x4 data:66 72 65 64
+*Mar 22 17:09:20.768: ISDN BR1/0 EVENTd: calltrkr_setup_received: isdn_info=2207362932l, call_id=0x8005 ORIGINATE
+*Mar 22 17:09:20.768: ISDN BR1/0 EVENTd: calltrkr_setup_received: calltracker disabled
+*Mar 22 17:09:21.273: ISDN BR1/0 EVENTd: process_rxstate: cause=0x1F (31), cause_present=1
+*Mar 22 17:09:21.277: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391AF74, call_id=0x8005
+*Mar 22 17:09:21.277: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8005
+*Mar 22 17:09:21.277: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8005
+*Mar 22 17:09:21.277: ISDN BR1/0 EVENTd: host_disconnect: call to <unknown> terminated
+*Mar 22 17:09:21.281: ISDN BR1/0 EVENTd: process_disc_ack: call id 0x8005, ces 1, call type VOICE cause 0x0
+*Mar 22 17:09:21.365: ISDN  EVENTd: cc_clear_free_list freed 0x83952428
+*Mar 22 17:09:21.369: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391AF74, call_id=0x8005
+*Mar 22 17:09:21.369: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8005
+*Mar 22 17:09:21.369: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391DCB4, call_id=0x8005
+*Mar 22 17:09:21.369: ISDN BR1/0 EVENTd: calltrkr_call_cleared: isdn_info=0x8391AF74, call_id=0x8005
+*Mar 22 17:09:21.373: ISDN BR1/0 EVENTd: host_disconnect_ack: call type is VOICE
+
+
+
+
+
+
+Router#debug isdn cc detail
+debug isdn cc detail is         ON.
+Router#
+Router#
+Router#
+*Mar 22 17:10:17.681: ISDN BR1/0 CCd: CCBRI_Go: Host PkgInfo:
+*Mar 22 17:10:17.685:   0108018006176C06008000353136700D
+*Mar 22 17:10:17.685:   00003030363033343632313538040380
+*Mar 22 17:10:17.685:   90A31801831E028183280466726564A1
+*Mar 22 17:10:17.685:
+*Mar 22 17:10:18.210: ISDN BR1/0 CCd: CCBRI_Go: Host PkgInfo:
+*Mar 22 17:10:18.210:   0608018006050803FF8008
+
+
+
+
+
+
+Router#debug cdapi events
+CDAPI events debugging is on
+Router#
+Router#
+Router#
+Router#
+*Mar 22 17:10:56.409: BR1/0 CDAPI: TX -> CDAPI_MSG_CONNECT_REQ to ISDN call = 0x8007
+*Mar 22 17:10:56.409:   From Appl/Stack = TSP CDAPI Application Voice
+*Mar 22 17:10:56.409:   Call Type    = VOICE
+*Mar 22 17:10:56.409:   B Channel    = -1
+*Mar 22 17:10:56.409:   dslId        = 8
+*Mar 22 17:10:56.409:   Idb          = 83919578
+*Mar 22 17:10:56.413:   BChanIdb     = 0
+*Mar 22 17:10:56.413:   Handle       = 0
+*Mar 22 17:10:56.413:   RPA          = 0
+*Mar 22 17:10:56.413:   Cause        = 0
+*Mar 22 17:10:56.413:   ApplCause    = 0
+*Mar 22 17:10:56.413:   ApplSpecData = 0
+*Mar 22 17:10:56.413:   Calling Party Number = 516
+*Mar 22 17:10:56.413:   Called Party Number = 00603462158
+*Mar 22 17:10:56.413:   Overlap = 0
+*Mar 22 17:10:56.425: CDAPI-ISDN BR1/0: RX <- CDAPI_MSG_CONNECT_REQ from TSP CDAPI Application Voice call = 0x8007
+*Mar 22 17:10:56.425:   Sub Msg   = CDAPI_MSG_SUBTYPE_ENBLOC
+*Mar 22 17:10:56.425:   Call Type = VOICE
+*Mar 22 17:10:56.425:   B Channel = -1
+*Mar 22 17:10:56.425:   Cause     = 0
+*Mar 22 17:10:56.425:   Calling Party Number = 516
+*Mar 22 17:10:56.425:   Called Party Number = 00603462158
+*Mar 22 17:10:56.693: BR1/0 CDAPI: TX -> CDAPI_MSG_SUBTYPE_CALL_PROC_IND to TSP CDAPI Application Voice call = 0x8007
+*Mar 22 17:10:56.693:   From Appl/Stack = ISDN
+*Mar 22 17:10:56.693:   Call Type    = VOICE
+*Mar 22 17:10:56.693:   B Channel    = 0
+*Mar 22 17:10:56.693:   dslId        = 8
+*Mar 22 17:10:56.693:   Idb          = 83919578
+*Mar 22 17:10:56.693:   BChanIdb     = 0
+*Mar 22 17:10:56.693:   Handle       = 0
+*Mar 22 17:10:56.693:   RPA          = 0
+*Mar 22 17:10:56.693:   Cause        = 0
+*Mar 22 17:10:56.693:   ApplCause    = 0
+*Mar 22 17:10:56.697:   ApplSpecData = 0
+*Mar 22 17:10:56.697:   Overlap = 0
+*Mar 22 17:10:56.973: BR1/0 CDAPI: TX -> CDAPI_MSG_SUBTYPE_RESUME_REJ_IND to TSP CDAPI Application Voice call = 0x8007
+*Mar 22 17:10:56.973:   From Appl/Stack = ISDN
+*Mar 22 17:10:56.973:   Call Type    = VOICE
+*Mar 22 17:10:56.973:   B Channel    = 65535
+*Mar 22 17:10:56.973:   dslId        = 8
+*Mar 22 17:10:56.973:   Idb          = 83919578
+*Mar 22 17:10:56.973:   BChanIdb     = 0
+*Mar 22 17:10:56.973:   Handle       = 0
+*Mar 22 17:10:56.977:   RPA          = 0
+*Mar 22 17:10:56.977:   Cause        = 0
+*Mar 22 17:10:56.977:   ApplCause    = 0
+*Mar 22 17:10:56.977:   ApplSpecData = 0
+*Mar 22 17:10:56.977:   Overlap = 0
+*Mar 22 17:10:56.977: BR1/0 CDAPI: TX -> CDAPI_MSG_DISCONNECT_IND to TSP CDAPI Application Voice call = 0x8007
+*Mar 22 17:10:56.977:   From Appl/Stack = ISDN
+*Mar 22 17:10:56.977:   Call Type    = VOICE
+*Mar 22 17:10:56.977:   B Channel    = 0
+*Mar 22 17:10:56.982:   dslId        = 8
+*Mar 22 17:10:56.982:   Idb          = 83919578
+*Mar 22 17:10:56.982:   BChanIdb     = 0
+*Mar 22 17:10:56.982:   Handle       = 0
+*Mar 22 17:10:56.982:   RPA          = 0
+*Mar 22 17:10:56.982:   Cause        = 31
+*Mar 22 17:10:56.982:   ApplCause    = 0
+*Mar 22 17:10:56.982:   ApplSpecData = 0
+*Mar 22 17:10:56.982:   Overlap = 0
+*Mar 22 17:10:57.070: BR1/0 CDAPI: TX -> CDAPI_MSG_SUBTYPE_REL_COMP_IND to TSP CDAPI Application Voice call = 0x8007
+*Mar 22 17:10:57.074:   From Appl/Stack = ISDN
+*Mar 22 17:10:57.074:   Call Type    = VOICE
+*Mar 22 17:10:57.074:   B Channel    = 0
+*Mar 22 17:10:57.074:   dslId        = 8
+*Mar 22 17:10:57.074:   Idb          = 83919578
+*Mar 22 17:10:57.074:   BChanIdb     = 0
+*Mar 22 17:10:57.074:   Handle       = 0
+*Mar 22 17:10:57.074:   RPA          = 0
+*Mar 22 17:10:57.074:   Cause        = 0
+*Mar 22 17:10:57.074:   ApplCause    = 0
+*Mar 22 17:10:57.074:   ApplSpecData = 0
+*Mar 22 17:10:57.074:   Overlap = 0
+
+
+
+
+
+Router#debug tsp all
+This CLI command is now 'debug voip tsp all'
+Router#
+Router#
+Router#
+Router#debug voip tsp all
+voip tsp all debugging is on
+
+Router#
+*Mar 22 17:12:29.942: //-1/xxxxxxxxxxxx/TSP:(1/0/0):-1/8008/tsp_cdb_alloc:
+   CDB=0x840E32B4
+*Mar 22 17:12:29.942: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_setup_req:
+*Mar 22 17:12:29.942: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_cdapi_send_msg:
+   Message Type=2, Sub Message Type=1, Progress Indication=3
+*Mar 22 17:12:29.942: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_cdapi_form_msg:
+   Message Type=2, Sub Message Type=1
+*Mar 22 17:12:29.946: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_cdapi_form_msg:
+   Protocol Type=18
+*Mar 22 17:12:29.946: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_cdapi_form_msg:
+   CDAPI Octet Mask Value=0x3042
+*Mar 22 17:12:29.946: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_cdapi_msg_dump:
+   Message=TX To CDAPI, Message Type=2, Sub Message Type=1
+*Mar 22 17:12:29.946: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_setup_req:
+   Called Number=00603462158, TON=Unknown, NPI=Unknown, Setup Progress Indication=0, Reattempts Allowed=0
+   Calling Number=516, TON=Unknown, NPI=Unknown, Screening=Not Screened, Presentation=Allowed
+   Calling IE Present=TRUE, Calling Restrict=FALSE
+*Mar 22 17:12:30.194: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_cdapi_msg_dump:
+   Message=RX From CDAPI, Message Type=9, Sub Message Type=6
+*Mar 22 17:12:30.194: //17/66395652801A/TSP:(1/0/0):-1/8008/cdapi_tsp_rcv_msg:
+*Mar 22 17:12:30.194: //17/66395652801A/TSP:(1/0/0):-1/8008/cdapi_tsp_rcv_msg:
+   Message Type=9, Sub Message Type=6
+*Mar 22 17:12:30.194: //17/66395652801A/TSP:(1/0/0):-1/8008/cdapi_tsp_info_ind:
+   Sub Message Type=6
+*Mar 22 17:12:30.194: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_ccrawmsg_encap:
+*Mar 22 17:12:30.198: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_ccrawmsg_encap:
+   Facility Pointer=0x0
+*Mar 22 17:12:30.198: //17/66395652801A/TSP:(1/0/0):-1/8008/tsp_process_event:
+   [state:S_TSP_OUTCALL, event:E_CDAPI_TSP_PROCEEDING_IND]
+*Mar 22 17:12:30.198: //17/66395652801A/TSP:(1/0/0):-1/8008/cdapi_tsp_proceeding:
+   Progress Indication=0, Call Type=2, Early TDM Connect Indicated=TRUE, DSP-Less Call=FALSE
+*Mar 22 17:12:30.471: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_cdapi_msg_dump:
+   Message=RX From CDAPI, Message Type=9, Sub Message Type=35
+*Mar 22 17:12:30.475: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_rcv_msg:
+*Mar 22 17:12:30.475: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_rcv_msg:
+   Message Type=9, Sub Message Type=35
+*Mar 22 17:12:30.475: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_info_ind:
+   Sub Message Type=35
+*Mar 22 17:12:30.475: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_ccrawmsg_encap:
+*Mar 22 17:12:30.475: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_ccrawmsg_encap:
+   Facility Pointer=0x0
+*Mar 22 17:12:30.479: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_cdapi_msg_dump:
+   Message=RX From CDAPI, Message Type=7, Sub Message Type=0
+*Mar 22 17:12:30.479: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_rcv_msg:
+*Mar 22 17:12:30.479: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_rcv_msg:
+   Message Type=7, Sub Message Type=0
+*Mar 22 17:12:30.479: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_disc_ind:
+*Mar 22 17:12:30.479: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_ccrawmsg_encap:
+*Mar 22 17:12:30.479: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_ccrawmsg_encap:
+   Facility Pointer=0x840B9B9C
+*Mar 22 17:12:30.487: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_process_event:
+   [state:S_TSP_OUTCALL, event:E_CDAPI_TSP_RESUME_REJ_IND]
+*Mar 22 17:12:30.487: //-1/xxxxxxxxxxxx/TSP:():-1/FFFF/tsp_process_event:
+   SOFTWARE_ERROR_INFORMATIONAL; Invalid FSM Return Code
+   State=S_TSP_OUTCALL, Event=E_CDAPI_TSP_RESUME_REJ_IND, Return Code=-3
+*Mar 22 17:12:30.491: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_process_event:
+   [state:S_TSP_OUTCALL, event:E_CDAPI_TSP_DISCONNECT_IND]
+*Mar 22 17:12:30.491: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_release_ind:
+   Cause Value=31
+*Mar 22 17:12:30.495: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_release_req:
+*Mar 22 17:12:30.495: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_process_event:
+   [state:S_TSP_WAIT_RELEASE, event:E_TSP_RELEASE_REQ]
+*Mar 22 17:12:30.495: //17/66395652801A/TSP:(1/0/0):0/8008/cdapi_tsp_release_comp:
+*Mar 22 17:12:30.499: //17/66395652801A/TSP:(1/0/0):0/8008/tsp_free_cdb:
+*Mar 22 17:12:30.499: //17/66395652801A/TSP:(1/0/0):0/0000/tsp_cdb_dealloc:
+   CDB=0x840E32B4
+
+
+
+
+
+
+Thanks you for your help
+
+regards
+Frederic

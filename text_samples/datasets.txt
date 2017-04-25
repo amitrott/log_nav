@@ -1,0 +1,12 @@
+https://supportforums.cisco.com/discussion/10393431/sccp-sip-uc500
+https://supportforums.cisco.com/discussion/11690201/help-needed-connecting-isdn-bri-channel-isdn-pri-e1-channel-all-debugs-and
+https://supportforums.cisco.com/discussion/10549556/incoming-calls-now-working-sip
+https://supportforums.cisco.com/discussion/11815431/call-forward-issues-redirecting-number-co-rejecting-call
+https://supportforums.cisco.com/discussion/13047361/ip-flex-inbound-calls-disconnected-unity-mailboxes-15-30-seconds
+https://supportforums.cisco.com/discussion/10401256/voice-gateway-call-disconnecting
+https://supportforums.cisco.com/discussion/12159336/cannot-transfer-skype-calls
+https://supportforums.cisco.com/discussion/10412971/t-1-cas-wink-start
+https://supportforums.cisco.com/discussion/9602911/please-help-me-i-have-probleme-call-pstn
+
+
+http://www.isi.csic.es/dataset/

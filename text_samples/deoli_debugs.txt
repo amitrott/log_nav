@@ -1,0 +1,318 @@
+DEOLI router pinging DSCBL :
+
+
+
+debug isdn q931 is              ON.
+deoli#ping 10.50.10.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.50.10.1, timeout is 2 seconds:
+
+Nov  5 09:01:43.897: ISDN BR0/0/0 Q931: Sending SETUP  callref = 0x006C callID =
+ 0x806C switch = basic-net3 interface = User
+Nov  5 09:01:43.897: ISDN BR0/0/0 Q931: TX -> SETUP pd = 8  callref = 0x6C
+        Bearer Capability i = 0x8890
+                Standard = CCITT
+                Transfer Capability = Unrestricted Digital
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+                Preferred, B1
+        Called Party Number i = 0x80, '23252112'
+                Plan:Unknown, Type:Unknown
+Nov  5 09:01:44.129: ISDN BR0/0/0 Q931: RX <- SETUP_ACK pd = 8  callref = 0xEC
+        Channel ID i = 0x89
+                Exclusive, B1.
+Nov  5 09:01:44.901: ISDN BR0/0/0 Q931: RX <- DISCONNECT pd = 8  callref = 0xEC
+        Cause i = 0x82B9 - Bearer capability not presently authorized
+Nov  5 09:01:44.901: ISDN BR0/0/0 Q931: TX -> RELEASE pd = 8  callref = 0x6C
+        Cause i = 0x80B9 - Bearer capability not presently authorized
+Nov  5 09:01:45.009: ISDN BR0/0/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0xE
+C
+Nov  5 09:01:45.893: ISDN BR0/0/0 Q931: Sending SETUP  callref = 0x006D callID =
+ 0x806D switch = basic-net3 interface = User
+Nov  5 09:01:45.893: ISDN BR0/0/0 Q931: TX -> SETUP pd = 8  callref = 0x6D
+        Bearer Capability i = 0x8890
+                Standard = CCITT
+                Transfer Capability = Unrestricted Digital
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+                Preferred, B1
+        Called Party Number i = 0x80, '23252112'
+                Plan:Unknown, Type:Unknown
+Nov  5 09:01:46.113: ISDN BR0/0/0 Q931: RX <- SETUP_ACK pd = 8  callref = 0xED
+        Channel ID i = 0x89
+                Exclusive, B1.
+Nov  5 09:01:46.897: ISDN BR0/0/0 Q931: RX <- DISCONNECT pd = 8  callref = 0xED
+        Cause i = 0x82B9 - Bearer capability not presently authorized
+Nov  5 09:01:46.897: ISDN BR0/0/0 Q931: TX -> RELEASE pd = 8  callref = 0x6D
+        Cause i = 0x80B9 - Bearer capability not presently authorized
+Nov  5 09:01:47.005: ISDN BR0/0/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0xE
+D
+Nov  5 09:01:47.893: ISDN BR0/0/0 Q931: Sending SETUP  callref = 0x006E callID =
+ 0x806E switch = basic-net3 interface = User
+Nov  5 09:01:47.893: ISDN BR0/0/0 Q931: TX -> SETUP pd = 8  callref = 0x6E
+        Bearer Capability i = 0x8890
+                Standard = CCITT
+                Transfer Capability = Unrestricted Digital
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+                Preferred, B1
+        Called Party Number i = 0x80, '23252112'
+                Plan:Unknown, Type:Unknown
+Nov  5 09:01:48.101: ISDN BR0/0/0 Q931: RX <- SETUP_ACK pd = 8  callref = 0xEE
+        Channel ID i = 0x89
+                Exclusive, B1
+Nov  5 09:01:48.857: ISDN BR0/0/0 Q931: RX <- DISCONNECT pd = 8  callref = 0xEE
+        Cause i = 0x82B9 - Bearer capability not presently authorized.
+Nov  5 09:01:48.857: ISDN BR0/0/0 Q931: TX -> RELEASE pd = 8  callref = 0x6E
+        Cause i = 0x80B9 - Bearer capability not presently authorized
+Nov  5 09:01:48.945: ISDN BR0/0/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0xE
+E
+Nov  5 09:01:49.893: ISDN BR0/0/0 Q931: Sending SETUP  callref = 0x006F callID =
+ 0x806F switch = basic-net3 interface = User
+Nov  5 09:01:49.893: ISDN BR0/0/0 Q931: TX -> SETUP pd = 8  callref = 0x6F
+        Bearer Capability i = 0x8890
+                Standard = CCITT
+                Transfer Capability = Unrestricted Digital
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+                Preferred, B1
+        Called Party Number i = 0x80, '23252112'
+                Plan:Unknown, Type:Unknown
+Nov  5 09:01:50.113: ISDN BR0/0/0 Q931: RX <- SETUP_ACK pd = 8  callref = 0xEF
+        Channel ID i = 0x89
+                Exclusive, B1.
+Nov  5 09:01:50.861: ISDN BR0/0/0 Q931: RX <- DISCONNECT pd = 8  callref = 0xEF
+        Cause i = 0x82B9 - Bearer capability not presently authorized
+Nov  5 09:01:50.865: ISDN BR0/0/0 Q931: TX -> RELEASE pd = 8  callref = 0x6F
+        Cause i = 0x80B9 - Bearer capability not presently authorized
+Nov  5 09:01:50.953: ISDN BR0/0/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0xE
+F
+Nov  5 09:01:51.893: ISDN BR0/0/0 Q931: Sending SETUP  callref = 0x0070 callID =
+ 0x8070 switch = basic-net3 interface = User
+Nov  5 09:01:51.893: ISDN BR0/0/0 Q931: TX -> SETUP pd = 8  callref = 0x70
+        Bearer Capability i = 0x8890
+                Standard = CCITT
+                Transfer Capability = Unrestricted Digital
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+                Preferred, B1
+        Called Party Number i = 0x80, '23252112'
+                Plan:Unknown, Type:Unknown
+Nov  5 09:01:52.109: ISDN BR0/0/0 Q931: RX <- SETUP_ACK pd = 8  callref = 0xF0
+        Channel ID i = 0x89
+                Exclusive, B1.
+Success rate is 0 percent (0/5)
+deoli#
+Nov  5 09:01:52.857: ISDN BR0/0/0 Q931: RX <- DISCONNECT pd = 8  callref = 0xF0
+        Cause i = 0x82B9 - Bearer capability not presently authorized
+Nov  5 09:01:52.857: ISDN BR0/0/0 Q931: TX -> RELEASE pd = 8  callref = 0x70
+        Cause i = 0x80B9 - Bearer capability not presently authorized
+Nov  5 09:01:52.929: ISDN BR0/0/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0xF
+0
+deoli#u all
+
+
+========================================================================================================================
+
+PInging oneself output :  Debug ISDN q931 
+
+
+deoli#ping 10.50.10.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.50.10.2, timeout is 2 seconds:
+
+Nov  5 09:08:57.821:  Invoked enable BRI channel
+Nov  5 09:08:57.821: %ISDN-6-CONNECT: Interface BRI0/0/0:2 is now connected to N
+/A N/A
+Nov  5 09:08:57.949: %ISDN-6-CONNECT: Interface BRI0/0/0:1 is now connected to 2
+9914917 N/A
+Nov  5 09:08:57.997: %LINEPROTO-5-UPDOWN: Line protocol on Interface BRI0/0/0:1,
+ changed state to up
+Nov  5 09:08:57.997: %LINEPROTO-5-UPDOWN: Line protocol on Interface BRI0/0/0:2,
+ changed state to up
+Nov  5 09:08:57.997: %LINK-3-UPDOWN: Interface Virtual-Access1, changed state to
+ up.
+Nov  5 09:08:58.001: %LINEPROTO-5-UPDOWN: Line protocol on Interface Virtual-Acc
+ess1, changed state to up....
+Success rate is 0 percent (0/5)
+deoli#
+Nov  5 09:09:30.957: %ISDN-6-DISCONNECT: Interface BRI0/0/0:2  disconnected from
+  deoli, call lasted 33 seconds
+Nov  5 09:09:30.957: %LINEPROTO-5-UPDOWN: Line protocol on Interface BRI0/0/0:2,
+ changed state to down
+Nov  5 09:09:31.061: %ISDN-6-DISCONNECT: Interface BRI0/0/0:1  disconnected from
+ 29914917 deoli, call lasted 33 seconds
+Nov  5 09:09:31.065: %LINEPROTO-5-UPDOWN: Line protocol on Interface BRI0/0/0:1,
+ changed state to down
+Nov  5 09:09:31.069: %LINK-3-UPDOWN: Interface Virtual-Access1, changed state to
+ down
+Nov  5 09:09:31.073: %LINEPROTO-5-UPDOWN: Line protocol on Interface Virtual-Acc
+ess1, changed state to down
+
+
+
+
+=========================================================================================================================
+
+test calling ISDN q931   calling DSCBL 
+
+
+deoli#debug isdn q931
+debug isdn q931 is              ON.
+deoli#isdn test call interface b0/0/0 23252112
+deoli#
+Nov  5 09:20:06.008: ISDN BR0/0/0 Q931: Applying typeplan for sw-type 0x1 is 0x0
+ 0x0, Calling num 29914917
+Nov  5 09:20:06.012: ISDN BR0/0/0 Q931: Sending SETUP  callref = 0x0075 callID =
+ 0x8075 switch = basic-net3 interface = User
+Nov  5 09:20:06.012: ISDN BR0/0/0 Q931: TX -> SETUP pd = 8  callref = 0x75
+        Bearer Capability i = 0x8890
+                Standard = CCITT
+                Transfer Capability = Unrestricted Digital
+                Transfer Mode = Circuit
+                Transfer Rate = 64 kbit/s
+        Channel ID i = 0x81
+                Preferred, B1
+        Calling Party Number i = 0x0080, '29914917'
+                Plan:Unknown, Type:Unknown
+        Called Party Number i = 0x80, '23252112'
+                Plan:Unknown, Type:Unknown
+Nov  5 09:20:06.248: ISDN BR0/0/0 Q931: RX <- SETUP_ACK pd = 8  callref = 0xF5
+        Channel ID i = 0x89
+                Exclusive, B1
+Nov  5 09:20:07.020: ISDN BR0/0/0 Q931: RX <- DISCONNECT pd = 8  callref = 0xF5
+        Cause i = 0x82B9 - Bearer capability not presently authorized
+Nov  5 09:20:07.020: ISDN BR0/0/0 Q931: TX -> RELEASE pd = 8  callref = 0x75
+        Cause i = 0x80B9 - Bearer capability not presently authorized
+Nov  5 09:20:07.108: ISDN BR0/0/0 Q931: RX <- RELEASE_COMP pd = 8  callref = 0xF
+5
+
+
+======================================================================================================================
+
+debug ip packets and debug ppp authentication
+
+
+deoli#debug ppp authe
+deoli#debug ppp authentication
+PPP authentication debugging is on
+deoli#debug ip packet
+deoli#debug ip packet
+IP packet debugging is on
+deoli#isdn test cal in
+deoli#isdn test cal interface b0/0/0 23252112
+deoli#
+Nov  5 09:51:41.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 167, input feature, MCI Check(80), rtype 0, forus FALSE, sendself FALSE,
+mtu 0, fwdchk FALSE
+Nov  5 09:51:41.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 167, rcvd 2
+Nov  5 09:51:41.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 167, stop process pak for forus packet
+Nov  5 09:51:45.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 157, input feature, MCI Check(80), rtype 0, forus FALSE, sendself FALSE,
+mtu 0, fwdchk FALSE
+Nov  5 09:51:45.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 157, rcvd 2
+Nov  5 09:51:45.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 157, stop process pak for forus packet
+deoli#
+deoli#
+deoli#
+Nov  5 09:52:09.228: IP: s=192.168.38.151 (GigabitEthernet0/0), d=192.168.38.255
+, len 264, input feature, MCI Check(80), rtype 0, forus FALSE, sendself FALSE, m
+tu 0, fwdchk FALSE
+Nov  5 09:52:09.228: IP: tableid=0, s=192.168.38.151 (GigabitEthernet0/0), d=192
+.168.38.255 (GigabitEthernet0/0), routed via RIB
+Nov  5 09:52:09.228: IP: s=192.168.38.151 (GigabitEthernet0/0), d=192.168.38.255
+ (GigabitEthernet0/0), len 264, rcvd 3
+Nov  5 09:52:09.228: IP: s=192.168.38.151 (GigabitEthernet0/0), d=192.168.38.255
+, len 264, stop process pak for forus packet
+Nov  5 09:52:09.228: IP: tableid=0, s=192.168.38.151 (GigabitEthernet0/0), d=192
+.168.38.255 (GigabitEthernet0/0), routed via RIB
+Nov  5 09:52:09.228: IP: s=192.168.38.151 (GigabitEthernet0/0), d=192.168.38.255
+, len 238, input feature, MCI Check(80), rtype 0, forus FALSE, sendself FALSE, m
+tu 0, fwdchk FALSE
+Nov  5 09:52:09.228: IP: tableid=0, s=192.168.38.151 (GigabitEthernet0/0), d=192
+.168.38.255 (GigabitEthernet0/0), routed via RIB
+Nov  5 09:52:09.228: IP: s=192.168.38.151 (GigabitEthernet0/0), d=192.168.38.255
+ (GigabitEthernet0/0), len 238, rcvd 3
+Nov  5 09:52:09.228: IP: s=192.168.38.151 (GigabitEthernet0/0), d=192.168.38.255
+, len 238, stop process pak for forus packet
+Nov  5 09:52:09.228: IP: tableid=0, s=192.168.38.151 (GigabitEthernet0/0), d=192
+.168.38.255 (GigabitEthernet0/0), routed via RIB
+deoli#u all
+All possible debugging has been turned off
+deoli#
+Nov  5 09:52:12.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 167, input feature, MCI Check(80), rtype 0, forus FALSE, sendself FALSE,
+mtu 0, fwdchk FALSE
+Nov  5 09:52:12.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 167, rcvd 2
+Nov  5 09:52:12.768: IP: s=192.168.38.151 (GigabitEthernet0/0), d=255.255.255.25
+5, len 167, stop process pak for forus packet
+deoli#
+
+=============================================================================================================
+
+Debug ISDN q921 on deoli output
+
+
+deoli#debug isdn q921
+debug isdn q921 is              ON.
+deoli#
+Nov  5 10:02:24.396: ISDN BR0/0/0 Q921: User TX -> RRp sapi=0 tei=76 nr=120
+Nov  5 10:02:24.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:02:24.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+Nov  5 10:02:24.432: ISDN BR0/0/0 Q921: User RX <- RRf sapi=0 tei=76 nr=101
+Nov  5 10:02:34.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:02:34.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+Nov  5 10:02:44.396: ISDN BR0/0/0 Q921: User TX -> RRp sapi=0 tei=76 nr=120
+Nov  5 10:02:44.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:02:44.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+Nov  5 10:02:44.432: ISDN BR0/0/0 Q921: User RX <- RRf sapi=0 tei=76 nr=101
+Nov  5 10:02:54.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:02:54.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+Nov  5 10:03:04.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:03:04.396: ISDN BR0/0/0 Q921: User TX -> RRp sapi=0 tei=76 nr=120
+Nov  5 10:03:04.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+Nov  5 10:03:04.432: ISDN BR0/0/0 Q921: User RX <- RRf sapi=0 tei=76 nr=101
+Nov  5 10:03:14.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:03:14.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+Nov  5 10:03:24.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:03:24.396: ISDN BR0/0/0 Q921: User TX -> RRp sapi=0 tei=76 nr=120
+Nov  5 10:03:24.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+Nov  5 10:03:24.432: ISDN BR0/0/0 Q921: User RX <- RRf sapi=0 tei=76 nr=101
+Nov  5 10:03:34.396: ISDN BR0/0/0 Q921: User RX <- RRp sapi=0 tei=76 nr=101
+Nov  5 10:03:34.396: ISDN BR0/0/0 Q921: User TX -> RRf sapi=0 tei=76 nr=120
+deoli#u all
+All possible debugging has been turned off
+deoli#
+
+what connects the dots 
+
+
+===================================================================================================================
+
+ISDN STATUS :
+
+deoli#sh isdn status
+Global ISDN Switchtype = basic-net3
+ISDN BRI0/0/0 interface
+        dsl 0, interface ISDN Switchtype = basic-net3
+    Layer 1 Status:
+        ACTIVE
+    Layer 2 Status:
+        TEI = 78, Ces = 1, SAPI = 0, State = MULTIPLE_FRAME_ESTABLISHED
+    Layer 3 Status:
+        0 Active Layer 3 Call(s)
+    Active dsl 0 CCBs = 0
+    The Free Channel Mask:  0x80000003
+    Total Allocated ISDN CCBs = 0
+
+
