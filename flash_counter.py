@@ -1,9 +1,9 @@
 from Log_Nav import Log_Nav
 import re
 
-with Log_Nav(r"C:\Users\mitrotan.AMER\Desktop\romer_debug\SHOW_FLASH.txt") as fl:
+with Log_Nav(r"/home/angelo/PycharmProjects/log_nav/text_samples/SHOW_FLASH.txt") as fl:
 
-    name = "ccpexp"
+    name = "SEP.*xml"
     bytes = 0
 
     def count():
